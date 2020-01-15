@@ -62,7 +62,7 @@ class _CagegoryPageState extends State<CagegoryPage> with AutomaticKeepAliveClie
                       )
                     ],
                   )),
-              SearchWidget(),
+              SearchWidget('1千亿补贴'),
               DividerWidget(),
               Expanded(
                   child: Row(

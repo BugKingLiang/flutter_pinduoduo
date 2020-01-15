@@ -8,6 +8,7 @@ import 'package:pingduoduo/pages/home/home.dart';
 import 'package:pingduoduo/pages/member/member.dart';
 import 'package:pingduoduo/pages/message/msessage.dart';
 import 'package:pingduoduo/pages/recommend/recommend.dart';
+import 'package:pingduoduo/pages/search/search_page.dart';
 import 'package:pingduoduo/util/color_constant.dart';
 import 'package:pingduoduo/util/image_utls.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -68,7 +69,8 @@ class _MyAppState extends State<MyApp> {
     ];
 
     _bodyPgges = [
-      HomePage(),
+      /*HomePage(),*/
+      SearchPage(),
       RecommendPage(),
       CagegoryPage(),
       MessagePage(),

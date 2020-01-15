@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage>
           preferredSize: Size.fromHeight(0)),
       body: Column(
         children: <Widget>[
-        SearchWidget(bgColor: ColorConstant.primaryColor),
+        SearchWidget('1千亿补贴',bgColor: ColorConstant.primaryColor),
           Container(
               color: Colors.white,
               child: TabBar(
