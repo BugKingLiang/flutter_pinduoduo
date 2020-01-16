@@ -21,6 +21,7 @@ dependencies:
   cached_network_image: ^2.0.0
 #  flustars: ^0.2.6+1
   badges: ^1.1.0
+  flutter_svg: ^0.15.0
 
 
 dev_dependencies:
@@ -33,6 +34,7 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/svg/
     - assets/images/main/
     - assets/images/home/
     - assets/images/icons/

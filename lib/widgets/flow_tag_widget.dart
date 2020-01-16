@@ -1,24 +1,45 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pingduoduo/bean/flow_tag_bean.dart';
+import 'package:pingduoduo/provider/search_provider.dart';
+import 'package:pingduoduo/util/image_utls.dart';
+import 'package:provider/provider.dart';
 
 class FlowTagWidget extends StatefulWidget {
-  Function onDeletClick;
 
 
-  FlowTagWidget(this.onDeletClick);
+  var data;
+
+  FlowTagWidget(this.data);
 
   @override
-  _FlowTagWidgetState createState() => _FlowTagWidgetState(onDeletClick);
+  _FlowTagWidgetState createState() =>
+      _FlowTagWidgetState(data);
 
 }
 
 class _FlowTagWidgetState extends State<FlowTagWidget> {
 
-  bool _showDeleteIcon = false;
 
-  Function onDeletClick;
+  bool _showDeleteIcon =false;
+  FlowTagBean bean;
 
-  _FlowTagWidgetState(this.onDeletClick);
+
+
+  var data;
+
+  _FlowTagWidgetState(this.data);
+
+  @override
+  void initState() {
+    bean = data['bean'];
+    super.initState();
+
+
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +47,11 @@ class _FlowTagWidgetState extends State<FlowTagWidget> {
       alignment: AlignmentDirectional.topEnd,
       children: <Widget>[
         GestureDetector(
-          onLongPress: (){  //手指长按
+          onLongPress: bean.supportLongClick ? () { //手指长按
             setState(() {
               _showDeleteIcon = true;
             });
-          },
+          } : null,
           child: Container(
               margin: EdgeInsets.only(top: 5),
               padding: EdgeInsets.symmetric(vertical: 3, horizontal: 10),
@@ -44,39 +65,49 @@ class _FlowTagWidgetState extends State<FlowTagWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Offstage(
-                    offstage: true,
-                    child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(Icons.store_mall_directory)),
+                    offstage: bean.leftIcon == null,
+                    child: Container(
+
+                        width: ScreenUtil.getInstance().setWidth(40),
+                        height: ScreenUtil.getInstance().setWidth(40),
+
+                        child: ImageUtils.getImageWidget(
+                            bean.leftIcon, bean.imageType)),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(3.0),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8, vertical: 3),
                     child: Text(
-                      '对付恐惧啊',
-                      style: TextStyle(color: Color(0xff58595b)),
+                      bean.content,
+                      style: TextStyle(color: Color(0xff58595b),fontSize: 12),
                     ),
                   ),
                   Offstage(
-                    offstage: true,
-                    child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(Icons.store_mall_directory)),
+                    offstage: bean.rightIcon == null,
+                    child: Container(
+                        width: ScreenUtil.getInstance().setWidth(40),
+                        height: ScreenUtil.getInstance().setWidth(40),
+                        child: ImageUtils.getImageWidget(
+                            bean.rightIcon, bean.imageType)),
                   ),
                 ],
               )),
         ),
 
-          Positioned(
-            child: Offstage(
+        Positioned(
+          top: 2,
+          child: Offstage(
 
-                offstage:!_showDeleteIcon,child: GestureDetector(child: Text('×'),onTap: onDeletClick,)),
-          ),
+              offstage: !_showDeleteIcon,
+              child: GestureDetector(child: SizedBox(width:15,height:15,child: CircleAvatar(child: Text('×',style: TextStyle(fontSize:10,color: Colors.white)),backgroundColor: Color(0xff9c9c9c),)), onTap: () {
+                Provider.of<SearchProviderModel>(context).removeHistorySearch(
+                    data['headerIndex'], data['parentBean'], data['index']);
+              },)),
+        ),
 
       ],
     );
   }
-
-
 
 
 }

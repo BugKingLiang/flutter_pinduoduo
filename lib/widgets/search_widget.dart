@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pingduoduo/util/color_constant.dart';
 import 'package:pingduoduo/util/image_utls.dart';
 
+//搜索框的样式
 class SearchWidget extends StatelessWidget {
   double _imageSize;
   Color bgColor;
