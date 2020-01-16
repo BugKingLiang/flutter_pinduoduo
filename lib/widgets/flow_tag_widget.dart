@@ -12,7 +12,9 @@ class FlowTagWidget extends StatefulWidget {
 
   var data;
 
-  FlowTagWidget(this.data);
+  FlowTagWidget(Key key,this.data):super(key:key);
+
+
 
   @override
   _FlowTagWidgetState createState() =>
