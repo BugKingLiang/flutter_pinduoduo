@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pingduoduo/bean/flow_tag_bean.dart';
+import 'package:pingduoduo/pages/search/search_alternative_list.dart';
 import 'package:pingduoduo/provider/search_provider.dart';
-import 'package:pingduoduo/util/image_utls.dart';
+import 'package:pingduoduo/storage/mock_data.dart';
+import 'package:pingduoduo/storage/sp_data.dart';
 import 'package:pingduoduo/widgets/search_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -17,33 +18,36 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   SearchProviderModel spm;
 
-  List<Map<FlowTagBean, List<FlowTagBean>>> data;
+  var historyData;
+  TextEditingController _controller = TextEditingController();
+  bool showHistoryPage = true;
+
 
   @override
   void initState() {
     super.initState();
-    data = [
-      {
-        FlowTagBean('更多搜索方式',
-            leftIcon: 'light', imageType: ImageType.LOCAL_SVG): [
-          FlowTagBean('搜索店铺', leftIcon: 'store', imageType: ImageType.LOCAL_SVG,supportLongClick: true)
-        ]
-      },
-      {
-        FlowTagBean('搜索发现', leftIcon: 'find', imageType: ImageType.LOCAL_SVG): [
-          FlowTagBean('净水器直饮机'),
-          FlowTagBean('皮套女'),
-          FlowTagBean('快充数据线'),
-          FlowTagBean('傅雷家书人教版'),
-          FlowTagBean('净水器直饮机'),
-          FlowTagBean('智能感应飞行器'),
-          FlowTagBean('下半身裙子冬季'),
-          FlowTagBean('劲霸男装'),
-          FlowTagBean('无缝丝袜')
-        ],
-      },
-    ];
-    spm = SearchProviderModel(data);
+    historyData = Map<FlowTagBean,List<FlowTagBean>>();
+    historyData[MockData.search_history_key] = <FlowTagBean>[];
+
+    spm = SearchProviderModel.init(MockData.findData, MockData.recommendData,historyData);
+
+    //测试数据
+  /*  SPUtils.instance
+    ..putSearchHistory('哦哦哦')
+    ..putSearchHistory('ddddd')
+    ..putSearchHistory('逻辑');*/
+
+    SPUtils.instance.getSearchHistory().then((result){
+      var historys =   result.map((v){
+        return FlowTagBean(v, supportLongClick: true);
+      }).toList();
+      spm.addListHistoryData(historys);
+
+    });
+
+    _controller.addListener(onEditeChangeListener);
+
+
   }
 
   @override
@@ -66,14 +70,42 @@ class _SearchPageState extends State<SearchPage> {
             children: <Widget>[
               SearchWidget(
                 '1千亿补贴',
-                searchType: SearchType.SEARCH_RESULT_TYPE,
+                searchType: SearchType.SEARCH_TYPE,controller: _controller,
               ),
+
               Expanded(
-                  child: HistoryRecommendWidget())
+                  child: Stack(
+                    children: <Widget>[
+
+                      Offstage(
+                        child: HistoryRecommendWidget(),
+                        offstage: !showHistoryPage,
+                      ),
+                      Offstage(
+                        offstage: showHistoryPage,
+                        child: SearchAlternativeListWidget(),
+                      )
+
+                    ],
+                  )
+              )
             ],
           ),
         ),
       ),
     );
   }
+
+
+  void onEditeChangeListener(){
+    String inputText = _controller.text;
+
+  setState(() {
+    showHistoryPage = inputText.isEmpty;
+  });
+
+  }
+
+
+
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pingduoduo/http/api.dart';
+import 'package:pingduoduo/storage/http/api.dart';
 import 'package:pingduoduo/util/color_constant.dart';
 import 'package:pingduoduo/widgets/goods_info_widget.dart';
 import 'package:pingduoduo/widgets/quick_back_widget.dart';

@@ -1,8 +1,10 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pingduoduo/http/mock_data.dart';
 import 'package:pingduoduo/pages/home/widgets/other_widgets.dart';
+import 'package:pingduoduo/storage/http/api.dart';
+import 'package:pingduoduo/storage/mock_data.dart';
 import 'package:pingduoduo/widgets/goods_info_widget.dart';
 
 class OtherPage extends StatefulWidget {

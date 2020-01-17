@@ -1,7 +1,8 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:pingduoduo/http/mock_data.dart';
+
+import '../mock_data.dart';
 
 typedef RequestCallBack<T> = void Function(T value);
 

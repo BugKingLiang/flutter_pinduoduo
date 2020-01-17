@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pingduoduo/provider/search_provider.dart';
 import 'package:pingduoduo/util/color_constant.dart';
 import 'package:pingduoduo/util/image_utls.dart';
+import 'package:provider/provider.dart';
 
 //搜索框的样式
 class SearchWidget extends StatelessWidget {
@@ -10,29 +13,30 @@ class SearchWidget extends StatelessWidget {
 
   String content;
   SearchType searchType;
+  TextEditingController controller;
 
+  bool _showClearIcon = false;
 
-  SearchWidget(this.content,{this.bgColor = Colors.white,this.searchType = SearchType.ONLY_SHOW_TYPE});
+  SearchWidget(this.content,
+      {this.bgColor = Colors.white,
+      this.searchType = SearchType.ONLY_SHOW_TYPE,
+      this.controller});
 
   @override
   Widget build(BuildContext context) {
     _imageSize = ScreenUtil.getInstance().setWidth(60);
 
-    switch(searchType){
-
+    switch (searchType) {
       case SearchType.SEARCH_RESULT_TYPE:
       case SearchType.SEARCH_TYPE:
-
-        return _createTextFieldType();
-
+        return _createTextFieldType(context);
 
       default:
-        return _createTabarShowType();
+        return _createTabarShowType(context);
     }
-
   }
 
-  Widget _createTabarShowType() {
+  Widget _createTabarShowType(BuildContext context) {
     return Container(
       color: bgColor,
       padding: EdgeInsets.all(10),
@@ -61,7 +65,7 @@ class SearchWidget extends StatelessWidget {
                   fit: BoxFit.fill,
                   width: _imageSize,
                   height: _imageSize,
-                ))
+                )),
           ],
         ),
       ),
@@ -69,7 +73,7 @@ class SearchWidget extends StatelessWidget {
   }
 
   //输入框类型
-  Widget _createTextFieldType() {
+  Widget _createTextFieldType(BuildContext context) {
     return Container(
       height: ScreenUtil.instance.setHeight(150),
       padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
@@ -93,76 +97,98 @@ class SearchWidget extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 10),
                 ),
                 Expanded(
-
-                    child:Container(
-                      height: ScreenUtil.instance.setHeight(150),
-
-                      child: searchType == SearchType.SEARCH_RESULT_TYPE?_createSearchContentWidget(content):_createTextFieldWidget(content),
-                    )
-                ),
+                    child: Container(
+                  height: ScreenUtil.instance.setHeight(150),
+                  child: searchType == SearchType.SEARCH_RESULT_TYPE
+                      ? _createSearchContentWidget(content)
+                      : _createTextFieldWidget(context, content),
+                )),
                 Container(
                     margin: EdgeInsets.only(right: 10),
-                    child: Image.asset(
-                      ImageUtils.getImagePath('icons/anb'),
-                      fit: BoxFit.fill,
-                      width: _imageSize,
-                      height: _imageSize,
+                    child: Consumer<SearchProviderModel>(
+                      builder: (context, SearchProviderModel model, child) {
+                        return _toggleIcon(context,model.showClearIcon);
+                      },
                     ))
               ],
             ),
           )),
-
           Offstage(
-            offstage: searchType == SearchType.SEARCH_RESULT_TYPE,
-            child: Container(
-              padding: EdgeInsets.only(left: 10),
-              child: Text('搜索', style: TextStyle(color: ColorConstant.text_gray,fontSize: 18)),
-            )
-          ),
-
+              offstage: searchType == SearchType.SEARCH_RESULT_TYPE,
+              child: Container(
+                padding: EdgeInsets.only(left: 10),
+                child: Text('搜索',
+                    style: TextStyle(
+                        color: ColorConstant.text_gray, fontSize: 18)),
+              )),
         ],
       ),
     );
   }
 
+  Widget _toggleIcon(context,bool showClear) {
+    Widget iconWidget;
+    if (showClear) {
+      iconWidget =  GestureDetector(
+        onTap: (){
+         controller.clear();
+         Provider.of<SearchProviderModel>(context).showClearIcon =false;
+         },
+        child: SvgPicture.asset(ImageUtils.getSvgImagePath('clear'),
+            fit: BoxFit.fill, width: _imageSize, height: _imageSize),
+      );
 
-  Widget _createTextFieldWidget(String hintText){
-    return TextField(
-      decoration: InputDecoration(
-        hintStyle: TextStyle(fontSize: 14),
-          hintText: hintText, border: InputBorder.none),
-      textInputAction: TextInputAction.search,
-    );
 
+    } else {
+      iconWidget = Image.asset(
+        ImageUtils.getImagePath('icons/anb'),
+        fit: BoxFit.fill,
+        width: _imageSize,
+        height: _imageSize,
+      );
+    }
 
+    return iconWidget;
   }
 
-  Widget _createSearchContentWidget(String content){
+  Widget _createTextFieldWidget(BuildContext context, String hintText) {
+    return TextField(
+      onChanged: (text) {
+        Provider.of<SearchProviderModel>(context).showClearIcon =text.isNotEmpty;
+        /*  if(text.isNotEmpty && text.length ==1){
 
+          Provider.of<SearchProviderModel>(context).showClearIcon = text.isNotEmpty;
+        }else if(text.isEmpty){
+          Provider.of<SearchProviderModel>(context).showClearIcon = false;
+        }*/
+      },
+      controller: controller,
+      decoration: InputDecoration(
+          hintStyle: TextStyle(fontSize: 14),
+          hintText: hintText,
+          border: InputBorder.none),
+      textInputAction: TextInputAction.search,
+    );
+  }
+
+  Widget _createSearchContentWidget(String content) {
     return Align(
       alignment: Alignment.centerLeft,
       child: Wrap(
         children: <Widget>[
           Container(
-            padding: EdgeInsets.symmetric(vertical: 3,horizontal: 10),
+            padding: EdgeInsets.symmetric(vertical: 3, horizontal: 10),
             decoration: BoxDecoration(
               color: Color(0xff959595),
               borderRadius: BorderRadius.circular(20),
             ),
-            child: Text('$content ×',style: TextStyle(color: Colors.white,fontSize: 12)),
+            child: Text('$content ×',
+                style: TextStyle(color: Colors.white, fontSize: 12)),
           ),
-
         ],
       ),
     );
-
   }
-
-
 }
 
-
-enum SearchType{
-  ONLY_SHOW_TYPE,SEARCH_TYPE,SEARCH_RESULT_TYPE
-
-}
+enum SearchType { ONLY_SHOW_TYPE, SEARCH_TYPE, SEARCH_RESULT_TYPE }

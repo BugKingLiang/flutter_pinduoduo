@@ -1,6 +1,8 @@
 
+import 'package:pingduoduo/bean/flow_tag_bean.dart';
 import 'package:pingduoduo/bean/message_bean.dart';
 import 'package:pingduoduo/pages/message/message_item_widget.dart';
+import 'package:pingduoduo/util/image_utls.dart';
 
 class MockData{
 
@@ -22,6 +24,29 @@ class MockData{
       MessageBean('https://t00img.yangkeduo.com/goods/images/2018-11-28/2291dd9e86ee973dba6ce41cb1347e80.jpeg?imageMogr2/strip%7CimageView2/2/w/1300/q/80', LeadingType.URL_TYPE,'壹号卖家旗舰店', false, '会尽快发货的', '20/01/02', 2),
       MessageBean('https://t00img.yangkeduo.com/goods/images/2018-11-06/f38c828de911532e1de9f5411bdda652.jpeg?imageMogr2/strip%7CimageView2/2/w/1300/q/80', LeadingType.URL_TYPE,'中国移动手机官方旗舰店', false, '亲,不讲价了哦!', '20/01/12', 10),
    ];
+
+  static final  FlowTagBean search_history_key =    FlowTagBean('历史搜索',leftIcon: 'history',rightIcon: 'delete', imageType: ImageType.LOCAL_SVG);
+
+  static Map<FlowTagBean,List<FlowTagBean>> findData = {
+    FlowTagBean('更多搜索方式',
+        leftIcon: 'light', imageType: ImageType.LOCAL_SVG): [
+      FlowTagBean('搜索店铺', leftIcon: 'store', imageType: ImageType.LOCAL_SVG)
+    ]
+  };
+
+  static Map<FlowTagBean,List<FlowTagBean>> recommendData = {
+    FlowTagBean('搜索发现', leftIcon: 'find', imageType: ImageType.LOCAL_SVG): [
+      FlowTagBean('净水器直饮机'),
+      FlowTagBean('皮套女'),
+      FlowTagBean('快充数据线'),
+      FlowTagBean('傅雷家书人教版'),
+      FlowTagBean('净水器直饮机'),
+      FlowTagBean('智能感应飞行器'),
+      FlowTagBean('下半身裙子冬季'),
+      FlowTagBean('劲霸男装'),
+      FlowTagBean('无缝丝袜')
+    ],
+  };
 
 
 }

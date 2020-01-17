@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pingduoduo/bean/image_text_bean.dart';
-import 'package:pingduoduo/http/api.dart';
+import 'package:pingduoduo/storage/http/api.dart';
 import 'package:pingduoduo/util/image_utls.dart';
 import 'package:pingduoduo/widgets/divider_dart.dart';
 import 'package:pingduoduo/widgets/goods_info_widget.dart';

@@ -2,11 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:pingduoduo/http/api.dart';
 import 'package:pingduoduo/pages/home/goods_item_widget.dart';
 import 'package:pingduoduo/pages/home/subsidy_widget.dart';
 import 'package:pingduoduo/pages/home/widgets/horizontal_slide_widgets.dart';
-import 'package:pingduoduo/util/color_constant.dart';
+import 'package:pingduoduo/storage/http/api.dart';
 import 'package:pingduoduo/widgets/quick_back_widget.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 

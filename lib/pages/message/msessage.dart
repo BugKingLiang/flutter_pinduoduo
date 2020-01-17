@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pingduoduo/bean/message_bean.dart';
-import 'package:pingduoduo/http/api.dart';
-import 'package:pingduoduo/http/mock_data.dart';
+import 'package:pingduoduo/storage/http/api.dart';
 import 'package:pingduoduo/pages/message/message_item_widget.dart';
+import 'package:pingduoduo/storage/mock_data.dart';
 import 'package:pingduoduo/util/color_constant.dart';
 import 'package:pingduoduo/widgets/divider_dart.dart';
 import 'package:pingduoduo/widgets/goods_info_widget.dart';

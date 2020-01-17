@@ -1,7 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pingduoduo/bean/flow_tag_bean.dart';
 import 'package:pingduoduo/provider/search_provider.dart';
 import 'package:pingduoduo/util/image_utls.dart';
@@ -14,8 +12,6 @@ class FlowTagWidget extends StatefulWidget {
 
   FlowTagWidget(Key key,this.data):super(key:key);
 
-
-
   @override
   _FlowTagWidgetState createState() =>
       _FlowTagWidgetState(data);
@@ -27,8 +23,6 @@ class _FlowTagWidgetState extends State<FlowTagWidget> {
 
   bool _showDeleteIcon =false;
   FlowTagBean bean;
-
-
 
   var data;
 
@@ -101,10 +95,17 @@ class _FlowTagWidgetState extends State<FlowTagWidget> {
           child: Offstage(
 
               offstage: !_showDeleteIcon,
-              child: GestureDetector(child: SizedBox(width:15,height:15,child: CircleAvatar(child: Text('×',style: TextStyle(fontSize:10,color: Colors.white)),backgroundColor: Color(0xff9c9c9c),)), onTap: () {
+              child: GestureDetector(child: SizedBox(width: 15,
+                  height: 15,
+                  child: CircleAvatar(child: Text(
+                      '×', style: TextStyle(fontSize: 10, color: Colors.white)),
+                    backgroundColor: Color(0xff9c9c9c),)),
+                onTap: () {
                 Provider.of<SearchProviderModel>(context).removeHistorySearch(
-                    data['headerIndex'], data['parentBean'], data['index']);
-              },)),
+                    data['parentBean'], data['index']);
+              },
+              )
+          ),
         ),
 
       ],
