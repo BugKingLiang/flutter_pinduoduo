@@ -85,6 +85,14 @@ class Api {
     return await _dio.get('http://yangkeduo.com/proxy/api/api/barrow/query?pdduid=4245542673668&count=20&app_name=new_chat_list&list_id=chat_list_rec_list_wR0pFR',
         queryParameters: {'offset': '${offset}'});
 
+  }
+  //热搜
+  //http://yangkeduo.com/proxy/api/search_hotquery?plat=h5&source=
+
+  Future<Response> searchSuggest(String search)async{
+
+    return  await _dio.get('http://yangkeduo.com/proxy/api/search_suggest?pdduid=4245542673668&query=a&plat=H5&source=search',queryParameters: {'query':search});
+
 
   }
 

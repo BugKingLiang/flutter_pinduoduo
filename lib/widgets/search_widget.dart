@@ -7,6 +7,21 @@ import 'package:pingduoduo/util/image_utls.dart';
 import 'package:provider/provider.dart';
 
 //搜索框的样式
+
+
+/*class SearchWidget extends StatefulWidget {
+  @override
+  _SearchWidgetState createState() => _SearchWidgetState();
+}
+
+class _SearchWidgetState extends State<SearchWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}*/
+
+
 class SearchWidget extends StatelessWidget {
   double _imageSize;
   Color bgColor;
@@ -154,7 +169,10 @@ class SearchWidget extends StatelessWidget {
   Widget _createTextFieldWidget(BuildContext context, String hintText) {
     return TextField(
       onChanged: (text) {
-        Provider.of<SearchProviderModel>(context).showClearIcon =text.isNotEmpty;
+
+        _showClearIcon = text.isEmpty;
+
+//        Provider.of<SearchProviderModel>(context).showClearIcon =text.isNotEmpty;
         /*  if(text.isNotEmpty && text.length ==1){
 
           Provider.of<SearchProviderModel>(context).showClearIcon = text.isNotEmpty;
@@ -163,6 +181,7 @@ class SearchWidget extends StatelessWidget {
         }*/
       },
       controller: controller,
+      autofocus: true,
       decoration: InputDecoration(
           hintStyle: TextStyle(fontSize: 14),
           hintText: hintText,

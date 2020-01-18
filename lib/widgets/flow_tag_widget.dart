@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pingduoduo/bean/flow_tag_bean.dart';
 import 'package:pingduoduo/provider/search_provider.dart';
 import 'package:pingduoduo/util/image_utls.dart';
@@ -97,9 +98,11 @@ class _FlowTagWidgetState extends State<FlowTagWidget> {
               offstage: !_showDeleteIcon,
               child: GestureDetector(child: SizedBox(width: 15,
                   height: 15,
-                  child: CircleAvatar(child: Text(
+                  child:SvgPicture.asset(ImageUtils.getSvgImagePath('clear'))
+                /*CircleAvatar(child: Text(
                       '×', style: TextStyle(fontSize: 10, color: Colors.white)),
-                    backgroundColor: Color(0xff9c9c9c),)),
+                    backgroundColor: Color(0xff9c9c9c),)*/
+              ),
                 onTap: () {
                 Provider.of<SearchProviderModel>(context).removeHistorySearch(
                     data['parentBean'], data['index']);

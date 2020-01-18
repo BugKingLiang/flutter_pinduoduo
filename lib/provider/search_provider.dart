@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:pingduoduo/bean/flow_tag_bean.dart';
 import 'package:pingduoduo/storage/mock_data.dart';
-import 'package:pingduoduo/storage/sp_data.dart';
 
 class SearchProviderModel<T> with ChangeNotifier {
 
 
   bool _showClearIcon =false;
+
+  List _searchSuggets;//搜索建议
+
 
   List<Map<T, List<T>>> _data = List();
   Map<T, List<T>> _historyData = Map(); //历史数据
@@ -29,12 +30,20 @@ class SearchProviderModel<T> with ChangeNotifier {
 
   set showClearIcon(bool value) {
     _showClearIcon = value;
+    if(value){
+      //清空数据
+      _searchSuggets?.clear();
+    }
     notifyListeners();
   }
 
 
+  List get searchSuggets => _searchSuggets;
 
-
+  set searchSuggets(List value) {
+    _searchSuggets = value;
+    notifyListeners();
+  }
   //过滤掉,空数据
   List<Map<T, List<T>>> get data => _data.where((map) {
         var every = map.values.every((v) {
@@ -51,6 +60,7 @@ class SearchProviderModel<T> with ChangeNotifier {
 
       _historyData[key].removeAt(index);
       notifyListeners();
+
     }
   }
 

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pingduoduo/bean/flow_tag_bean.dart';
-import 'package:pingduoduo/pages/search/search_alternative_list.dart';
+import 'package:pingduoduo/pages/search/search_suggest_list.dart';
 import 'package:pingduoduo/provider/search_provider.dart';
+import 'package:pingduoduo/storage/http/api.dart';
 import 'package:pingduoduo/storage/mock_data.dart';
 import 'package:pingduoduo/storage/sp_data.dart';
 import 'package:pingduoduo/widgets/search_widget.dart';
@@ -32,7 +33,7 @@ class _SearchPageState extends State<SearchPage> {
     spm = SearchProviderModel.init(MockData.findData, MockData.recommendData,historyData);
 
     //测试数据
-  /*  SPUtils.instance
+ /*   SPUtils.instance
     ..putSearchHistory('哦哦哦')
     ..putSearchHistory('ddddd')
     ..putSearchHistory('逻辑');*/
@@ -83,7 +84,7 @@ class _SearchPageState extends State<SearchPage> {
                       ),
                       Offstage(
                         offstage: showHistoryPage,
-                        child: SearchAlternativeListWidget(),
+                        child: SearchSuggestListWidget(),
                       )
 
                     ],
@@ -97,14 +98,25 @@ class _SearchPageState extends State<SearchPage> {
   }
 
 
-  void onEditeChangeListener(){
+  void onEditeChangeListener() {
     String inputText = _controller.text;
 
-  setState(() {
-    showHistoryPage = inputText.isEmpty;
-  });
+    setState(() {
+      showHistoryPage = inputText.isEmpty;
 
+    });
+
+
+    if (inputText.isNotEmpty) {
+
+      Api.instance.searchSuggest(inputText).then((response) {
+
+        spm.searchSuggets = response.data['suggest'];
+      });
+    }
   }
+
+
 
 
 
