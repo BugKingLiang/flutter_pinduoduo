@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pingduoduo/provider/search_provider.dart';
 import 'package:pingduoduo/util/color_constant.dart';
 import 'package:pingduoduo/util/image_utls.dart';
-import 'package:provider/provider.dart';
 
 //搜索框的样式
 
+class SearchWidget extends StatefulWidget {
+  Color bgColor;
 
-/*class SearchWidget extends StatefulWidget {
+  String content;
+  SearchType searchType;
+  TextEditingController controller;
+
+  SearchWidget(this.content,
+      {this.bgColor = Colors.white,
+      this.searchType = SearchType.ONLY_SHOW_TYPE,
+      this.controller});
+
   @override
-  _SearchWidgetState createState() => _SearchWidgetState();
+  _SearchWidgetState createState() => _SearchWidgetState(content,
+      bgColor: bgColor, searchType: searchType, controller: controller);
 }
 
 class _SearchWidgetState extends State<SearchWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}*/
-
-
-class SearchWidget extends StatelessWidget {
   double _imageSize;
   Color bgColor;
 
@@ -32,7 +33,7 @@ class SearchWidget extends StatelessWidget {
 
   bool _showClearIcon = false;
 
-  SearchWidget(this.content,
+  _SearchWidgetState(this.content,
       {this.bgColor = Colors.white,
       this.searchType = SearchType.ONLY_SHOW_TYPE,
       this.controller});
@@ -49,6 +50,11 @@ class SearchWidget extends StatelessWidget {
       default:
         return _createTabarShowType(context);
     }
+  }
+  @override
+  void dispose() {
+    super.dispose();
+    controller?.dispose();
   }
 
   Widget _createTabarShowType(BuildContext context) {
@@ -120,11 +126,7 @@ class SearchWidget extends StatelessWidget {
                 )),
                 Container(
                     margin: EdgeInsets.only(right: 10),
-                    child: Consumer<SearchProviderModel>(
-                      builder: (context, SearchProviderModel model, child) {
-                        return _toggleIcon(context,model.showClearIcon);
-                      },
-                    ))
+                    child: _toggleIcon(context, _showClearIcon))
               ],
             ),
           )),
@@ -141,19 +143,20 @@ class SearchWidget extends StatelessWidget {
     );
   }
 
-  Widget _toggleIcon(context,bool showClear) {
+  Widget _toggleIcon(context, bool showClear) {
     Widget iconWidget;
     if (showClear) {
-      iconWidget =  GestureDetector(
-        onTap: (){
-         controller.clear();
-         Provider.of<SearchProviderModel>(context).showClearIcon =false;
-         },
+      iconWidget = GestureDetector(
+        onTap: () {
+          //清除点击事件
+          controller.clear();
+          setState(() {
+            _showClearIcon = false;
+          });
+        },
         child: SvgPicture.asset(ImageUtils.getSvgImagePath('clear'),
             fit: BoxFit.fill, width: _imageSize, height: _imageSize),
       );
-
-
     } else {
       iconWidget = Image.asset(
         ImageUtils.getImagePath('icons/anb'),
@@ -169,19 +172,11 @@ class SearchWidget extends StatelessWidget {
   Widget _createTextFieldWidget(BuildContext context, String hintText) {
     return TextField(
       onChanged: (text) {
-
-        _showClearIcon = text.isEmpty;
-
-//        Provider.of<SearchProviderModel>(context).showClearIcon =text.isNotEmpty;
-        /*  if(text.isNotEmpty && text.length ==1){
-
-          Provider.of<SearchProviderModel>(context).showClearIcon = text.isNotEmpty;
-        }else if(text.isEmpty){
-          Provider.of<SearchProviderModel>(context).showClearIcon = false;
-        }*/
+        setState(() {
+          _showClearIcon = text.isNotEmpty;
+        });
       },
       controller: controller,
-      autofocus: true,
       decoration: InputDecoration(
           hintStyle: TextStyle(fontSize: 14),
           hintText: hintText,

@@ -100,10 +100,11 @@ class _SearchPageState extends State<SearchPage> {
 
   void onEditeChangeListener() {
     String inputText = _controller.text;
-
     setState(() {
+      if(inputText.isEmpty){
+        spm.clearSearchSuggets();
+      }
       showHistoryPage = inputText.isEmpty;
-
     });
 
 

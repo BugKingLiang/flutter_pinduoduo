@@ -4,7 +4,6 @@ import 'package:pingduoduo/storage/mock_data.dart';
 class SearchProviderModel<T> with ChangeNotifier {
 
 
-  bool _showClearIcon =false;
 
   List _searchSuggets;//搜索建议
 
@@ -26,24 +25,19 @@ class SearchProviderModel<T> with ChangeNotifier {
   }
 
 
-  bool get showClearIcon => _showClearIcon;
-
-  set showClearIcon(bool value) {
-    _showClearIcon = value;
-    if(value){
-      //清空数据
-      _searchSuggets?.clear();
-    }
-    notifyListeners();
-  }
-
-
   List get searchSuggets => _searchSuggets;
 
   set searchSuggets(List value) {
     _searchSuggets = value;
     notifyListeners();
   }
+
+  //清空历史数据
+  void clearSearchSuggets(){
+    _searchSuggets?.clear();
+//    notifyListeners();
+  }
+
   //过滤掉,空数据
   List<Map<T, List<T>>> get data => _data.where((map) {
         var every = map.values.every((v) {

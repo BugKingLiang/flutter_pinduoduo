@@ -26,10 +26,11 @@ class SearchResoutPage extends StatelessWidget {
         child: CustomScrollView(
           slivers: <Widget>[
 
-            SliverPersistentHeader(delegate: HeaderWidget(),floating: true,pinned: true,),
-            SliverFillRemaining(
-              child: Center(child: Text('FillRemaining', style: TextStyle(fontSize: 30.0))),
-            )
+            SliverPersistentHeader(delegate: HeaderWidget(),pinned: true,),
+           SliverList(delegate: SliverChildBuilderDelegate((context,index){
+             return Container(height: 100,child: Text('$index ====='));
+
+           },childCount: 30))
 
           ],
         ),
@@ -50,10 +51,11 @@ class HeaderWidget extends  SliverPersistentHeaderDelegate {
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
 
     return Container(
+      color: Colors.red,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-
+          Container(color: Colors.green,height: 200,),
           SearchWidget('kkkk',searchType: SearchType.SEARCH_RESULT_TYPE,)
 
         ],
@@ -70,7 +72,7 @@ class HeaderWidget extends  SliverPersistentHeaderDelegate {
 
   @override
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
-    return false;
+    return this !=oldDelegate;
   }
 
 
