@@ -12,6 +12,7 @@ import 'package:pingduoduo/pages/search/search_page.dart';
 import 'package:pingduoduo/pages/search/search_result_page.dart';
 import 'package:pingduoduo/util/color_constant.dart';
 import 'package:pingduoduo/util/image_utls.dart';
+import 'package:pingduoduo/widgets/pop_widget.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 void main() {
@@ -71,7 +72,7 @@ class _MyAppState extends State<MyApp> {
 
     _bodyPgges = [
       /*HomePage(),*/
-      SearchResoutPage(),
+      PopuWidget(),
       SearchPage(),
       /*RecommendPage(),*/
       CagegoryPage(),

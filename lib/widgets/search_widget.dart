@@ -19,30 +19,19 @@ class SearchWidget extends StatefulWidget {
       this.controller});
 
   @override
-  _SearchWidgetState createState() => _SearchWidgetState(content,
-      bgColor: bgColor, searchType: searchType, controller: controller);
+  _SearchWidgetState createState() => _SearchWidgetState();
 }
 
 class _SearchWidgetState extends State<SearchWidget> {
   double _imageSize;
-  Color bgColor;
-
-  String content;
-  SearchType searchType;
-  TextEditingController controller;
 
   bool _showClearIcon = false;
-
-  _SearchWidgetState(this.content,
-      {this.bgColor = Colors.white,
-      this.searchType = SearchType.ONLY_SHOW_TYPE,
-      this.controller});
 
   @override
   Widget build(BuildContext context) {
     _imageSize = ScreenUtil.getInstance().setWidth(60);
 
-    switch (searchType) {
+    switch (widget.searchType) {
       case SearchType.SEARCH_RESULT_TYPE:
       case SearchType.SEARCH_TYPE:
         return _createTextFieldType(context);
@@ -54,12 +43,12 @@ class _SearchWidgetState extends State<SearchWidget> {
   @override
   void dispose() {
     super.dispose();
-    controller?.dispose();
+    widget.controller?.dispose();
   }
 
   Widget _createTabarShowType(BuildContext context) {
     return Container(
-      color: bgColor,
+      color: widget.bgColor,
       padding: EdgeInsets.all(10),
       child: Container(
         height: ScreenUtil.getInstance().setHeight(100),
@@ -76,7 +65,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                 Image.asset(ImageUtils.getImagePath('main/apj'),
                     fit: BoxFit.fill, width: _imageSize, height: _imageSize),
                 Container(
-                    margin: EdgeInsets.only(left: 5), child: Text(content)),
+                    margin: EdgeInsets.only(left: 5), child: Text(widget.content)),
               ],
             )),
             Container(
@@ -120,9 +109,9 @@ class _SearchWidgetState extends State<SearchWidget> {
                 Expanded(
                     child: Container(
                   height: ScreenUtil.instance.setHeight(150),
-                  child: searchType == SearchType.SEARCH_RESULT_TYPE
-                      ? _createSearchContentWidget(content)
-                      : _createTextFieldWidget(context, content),
+                  child: widget.searchType == SearchType.SEARCH_RESULT_TYPE
+                      ? _createSearchContentWidget(widget.content)
+                      : _createTextFieldWidget(context, widget.content),
                 )),
                 Container(
                     margin: EdgeInsets.only(right: 10),
@@ -131,7 +120,7 @@ class _SearchWidgetState extends State<SearchWidget> {
             ),
           )),
           Offstage(
-              offstage: searchType == SearchType.SEARCH_RESULT_TYPE,
+              offstage: widget.searchType == SearchType.SEARCH_RESULT_TYPE,
               child: Container(
                 padding: EdgeInsets.only(left: 10),
                 child: Text('搜索',
@@ -149,7 +138,7 @@ class _SearchWidgetState extends State<SearchWidget> {
       iconWidget = GestureDetector(
         onTap: () {
           //清除点击事件
-          controller.clear();
+          widget.controller.clear();
           setState(() {
             _showClearIcon = false;
           });
@@ -176,7 +165,7 @@ class _SearchWidgetState extends State<SearchWidget> {
           _showClearIcon = text.isNotEmpty;
         });
       },
-      controller: controller,
+      controller: widget.controller,
       decoration: InputDecoration(
           hintStyle: TextStyle(fontSize: 14),
           hintText: hintText,

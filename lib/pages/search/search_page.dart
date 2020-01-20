@@ -33,7 +33,7 @@ class _SearchPageState extends State<SearchPage> {
     spm = SearchProviderModel.init(MockData.findData, MockData.recommendData,historyData);
 
     //测试数据
- /*   SPUtils.instance
+    /*SPUtils.instance
     ..putSearchHistory('哦哦哦')
     ..putSearchHistory('ddddd')
     ..putSearchHistory('逻辑');*/

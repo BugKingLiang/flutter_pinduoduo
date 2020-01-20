@@ -83,7 +83,7 @@ class _HistoryRecommendWidgetState extends State<HistoryRecommendWidget> {
           runAlignment: WrapAlignment.start,
           children: flowTagBean.asMap().keys.map((index) {
             var bean = flowTagBean[index];
-            return FlowTagWidget(UniqueKey(),{
+            return FlowTagWidget(ValueKey(bean),{
               'parentBean': headerData,
               'bean': bean,
               'index': index

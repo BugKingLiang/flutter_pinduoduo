@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pingduoduo/bean/flow_tag_bean.dart';
 import 'package:pingduoduo/provider/search_provider.dart';
+import 'package:pingduoduo/storage/sp_data.dart';
 import 'package:pingduoduo/util/image_utls.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +16,7 @@ class FlowTagWidget extends StatefulWidget {
 
   @override
   _FlowTagWidgetState createState() =>
-      _FlowTagWidgetState(data);
+      _FlowTagWidgetState();
 
 }
 
@@ -25,13 +26,11 @@ class _FlowTagWidgetState extends State<FlowTagWidget> {
   bool _showDeleteIcon =false;
   FlowTagBean bean;
 
-  var data;
 
-  _FlowTagWidgetState(this.data);
+  _FlowTagWidgetState();
 
   @override
   void initState() {
-    bean = data['bean'];
     super.initState();
 
 
@@ -40,6 +39,7 @@ class _FlowTagWidgetState extends State<FlowTagWidget> {
 
   @override
   Widget build(BuildContext context) {
+    bean = widget.data['bean'];
     return Stack(
       alignment: AlignmentDirectional.topEnd,
       children: <Widget>[
@@ -99,13 +99,16 @@ class _FlowTagWidgetState extends State<FlowTagWidget> {
               child: GestureDetector(child: SizedBox(width: 15,
                   height: 15,
                   child:SvgPicture.asset(ImageUtils.getSvgImagePath('clear'))
-                /*CircleAvatar(child: Text(
-                      '×', style: TextStyle(fontSize: 10, color: Colors.white)),
-                    backgroundColor: Color(0xff9c9c9c),)*/
               ),
                 onTap: () {
-                Provider.of<SearchProviderModel>(context).removeHistorySearch(
-                    data['parentBean'], data['index']);
+                  SPUtils.instance.removeSearchHistory(bean.content).then((result) {
+                    if (result) {
+                      Provider.of<SearchProviderModel>(context)
+                          .removeHistorySearch(
+                          widget.data['parentBean'], widget.data['index']);
+                    }
+
+                });
               },
               )
           ),

@@ -19,14 +19,20 @@ class SearchResoutPage extends StatelessWidget {
                 elevation: 0,
                 brightness: Brightness.light,
                 backgroundColor: Colors.white),
-            preferredSize: Size.fromHeight(0)),
+            preferredSize: Size.fromHeight(0),
+        ),
 
       body: Container(
 
         child: CustomScrollView(
           slivers: <Widget>[
 
-            SliverPersistentHeader(delegate: HeaderWidget(),pinned: true,),
+            SliverAppBar(
+              floating: true,
+              backgroundColor:Colors.white,
+              flexibleSpace:  Container(child: SearchWidget('kkkk',searchType: SearchType.SEARCH_RESULT_TYPE)),
+            ),
+            SliverPersistentHeader(delegate: HeaderWidget(ScreenUtil.getInstance().setHeight(120)),pinned: true,),
            SliverList(delegate: SliverChildBuilderDelegate((context,index){
              return Container(height: 100,child: Text('$index ====='));
 
@@ -47,28 +53,26 @@ class SearchResoutPage extends StatelessWidget {
 
 
 class HeaderWidget extends  SliverPersistentHeaderDelegate {
+
+  double childHeight;
+
+
+  HeaderWidget(this.childHeight);
+
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
 
     return Container(
       color: Colors.red,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(color: Colors.green,height: 200,),
-          SearchWidget('kkkk',searchType: SearchType.SEARCH_RESULT_TYPE,)
-
-        ],
-      ),
 
     );
   }
 
   @override
-  double get maxExtent => 300;
+  double get maxExtent => childHeight;
 
   @override
-  double get minExtent => 100;
+  double get minExtent => childHeight;
 
   @override
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {

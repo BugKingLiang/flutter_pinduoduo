@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pingduoduo/storage/mock_data.dart';
+import 'package:pingduoduo/storage/sp_data.dart';
 
 class SearchProviderModel<T> with ChangeNotifier {
 
@@ -51,7 +52,6 @@ class SearchProviderModel<T> with ChangeNotifier {
   void removeHistorySearch(T key, int index) {
     if (_historyData != null && _historyData[key].isNotEmpty) {
       //必须有历史数据
-
       _historyData[key].removeAt(index);
       notifyListeners();
 

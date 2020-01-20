@@ -91,7 +91,7 @@ class Api {
 
   Future<Response> searchSuggest(String search)async{
 
-    return  await _dio.get('http://yangkeduo.com/proxy/api/search_suggest?pdduid=4245542673668&query=a&plat=H5&source=search',queryParameters: {'query':search});
+    return  await _dio.get('http://yangkeduo.com/proxy/api/search_suggest?pdduid=424554267366&plat=H5&source=search',queryParameters: {'query':search});
 
 
   }

@@ -22,11 +22,18 @@ class SPUtils {
   }
 
 
-  void putSearchHistory(String history) async {
+  void addSearchHistory(String history) async {
     var sp = await SharedPreferences.getInstance();
-    var stringList = sp.getStringList('search_history');
-    stringList?.add(history);
-    sp.setStringList('search_history', stringList == null?[history]:stringList);
+    var historyList = sp.getStringList('search_history');
+    if(historyList != null && !historyList.contains(history)){
+      //去重
+      historyList?.add(history);
+
+    }
+      sp.setStringList('search_history', historyList == null?[history]:historyList);
+
+
+
 
   }
 
@@ -34,5 +41,19 @@ class SPUtils {
     var sp = await SharedPreferences.getInstance();
     return sp.getStringList('search_history');
   }
+
+  Future<bool> removeSearchHistory(String history)async{
+
+    var sp = await SharedPreferences.getInstance();
+    //从历史列表中删除
+    var historyList = sp.getStringList('search_history');
+    var result = historyList?.remove(history);
+    //更新历史列表
+    sp.setStringList('search_history', historyList);
+
+    return   result;
+
+  }
+
 
 }
