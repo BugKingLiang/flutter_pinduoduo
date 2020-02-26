@@ -58,7 +58,7 @@ class _RightCategoryWidgetState extends State<RightCategoryWidget> {
               offstage: image == null,
               child: Container(
                 child: Image(
-                    image: CachedNetworkImageProvider(image),
+                    image: CachedNetworkImageProvider(image??""),
                     fit: BoxFit.fill,
                     height: ScreenUtil.getInstance().setWidth(50)),
               )),

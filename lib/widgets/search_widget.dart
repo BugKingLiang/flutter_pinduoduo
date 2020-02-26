@@ -1,8 +1,12 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pingduoduo/router/router.dart';
 import 'package:pingduoduo/util/color_constant.dart';
 import 'package:pingduoduo/util/image_utls.dart';
+
+import '../Application.dart';
 
 //搜索框的样式
 
@@ -58,16 +62,26 @@ class _SearchWidgetState extends State<SearchWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Expanded(
-                child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Image.asset(ImageUtils.getImagePath('main/apj'),
-                    fit: BoxFit.fill, width: _imageSize, height: _imageSize),
-                Container(
-                    margin: EdgeInsets.only(left: 5), child: Text(widget.content)),
-              ],
-            )),
+                child: Listener(
+                  onPointerDown: (event) {
+                    Application.router.navigateTo(context, Routes.search_page,
+                        transition: TransitionType.fadeIn);
+                  },
+                  behavior: HitTestBehavior.opaque,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Image.asset(ImageUtils.getImagePath('main/apj'),
+                          fit: BoxFit.fill,
+                          width: _imageSize,
+                          height: _imageSize),
+                      Container(
+                          margin: EdgeInsets.only(left: 5),
+                          child: Text(widget.content)),
+                    ],
+                  ),
+                )),
             Container(
                 margin: EdgeInsets.only(right: 10),
                 child: Image.asset(
@@ -89,10 +103,18 @@ class _SearchWidgetState extends State<SearchWidget> {
       padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
       child: Row(
         children: <Widget>[
-          Container(
-            padding: EdgeInsets.only(right: 10),
-            child: Image.asset(ImageUtils.getImagePath('icons/adg'),
-                fit: BoxFit.fill, width: _imageSize, height: _imageSize),
+          Listener(
+            onPointerDown: (event){
+
+              Application.router.pop(context);
+
+            },
+            behavior: HitTestBehavior.opaque,
+            child: Container(
+              padding: EdgeInsets.only(right: 10),
+              child: Image.asset(ImageUtils.getImagePath('icons/adg'),
+                  fit: BoxFit.fill, width: _imageSize, height: _imageSize),
+            ),
           ),
           Expanded(
               child: Container(
@@ -121,11 +143,16 @@ class _SearchWidgetState extends State<SearchWidget> {
           )),
           Offstage(
               offstage: widget.searchType == SearchType.SEARCH_RESULT_TYPE,
-              child: Container(
-                padding: EdgeInsets.only(left: 10),
-                child: Text('搜索',
-                    style: TextStyle(
-                        color: ColorConstant.text_gray, fontSize: 18)),
+              child: GestureDetector(
+                onTap: (){
+                  Application.router.navigateTo(context, Routes.search_resout_page,transition: TransitionType.cupertino);
+                },
+                child: Container(
+                  padding: EdgeInsets.only(left: 10),
+                  child: Text('搜索',
+                      style: TextStyle(
+                          color: ColorConstant.text_gray, fontSize: 18)),
+                ),
               )),
         ],
       ),

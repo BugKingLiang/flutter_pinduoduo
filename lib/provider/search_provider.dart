@@ -5,6 +5,7 @@ import 'package:pingduoduo/storage/sp_data.dart';
 class SearchProviderModel<T> with ChangeNotifier {
 
 
+  bool _showHistoryPage =true;
 
   List _searchSuggets;//搜索建议
 
@@ -36,7 +37,6 @@ class SearchProviderModel<T> with ChangeNotifier {
   //清空历史数据
   void clearSearchSuggets(){
     _searchSuggets?.clear();
-//    notifyListeners();
   }
 
   //过滤掉,空数据
@@ -69,13 +69,13 @@ class SearchProviderModel<T> with ChangeNotifier {
     _historyData.values.map((v){
       v.insert(0, data);
     });
+  }
 
-    //notifyListeners();
+  bool get showHistoryPage => _showHistoryPage;
 
-
-
-
-
+  set showHistoryPage(bool value) {
+    _showHistoryPage = value;
+    notifyListeners();
   }
 
 

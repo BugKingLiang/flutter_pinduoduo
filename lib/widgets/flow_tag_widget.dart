@@ -1,8 +1,11 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pingduoduo/Application.dart';
 import 'package:pingduoduo/bean/flow_tag_bean.dart';
 import 'package:pingduoduo/provider/search_provider.dart';
+import 'package:pingduoduo/router/router.dart';
 import 'package:pingduoduo/storage/sp_data.dart';
 import 'package:pingduoduo/util/image_utls.dart';
 import 'package:provider/provider.dart';
@@ -49,6 +52,11 @@ class _FlowTagWidgetState extends State<FlowTagWidget> {
               _showDeleteIcon = true;
             });
           } : null,
+          onTap: (){
+            Application.router.navigateTo(context,
+                Routes.search_resout_page+"?key=${Uri.encodeComponent(bean.content)}",
+                transition: TransitionType.cupertino);
+          },
           child: Container(
               margin: EdgeInsets.only(top: 5),
               padding: EdgeInsets.symmetric(vertical: 3, horizontal: 10),

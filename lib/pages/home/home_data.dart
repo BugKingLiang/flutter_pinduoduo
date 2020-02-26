@@ -3,40 +3,40 @@ class HomeData{
 
   static List categoryData = [
     [
-      ['https://t00img.yangkeduo.com/goods/2019-10-24/9c511fafac04f30eaa86721de738cfa1.png?imageMogr2/format/webp/quality/50','限时秒杀'],
-      ['https://t05img.yangkeduo.com/images/2018-05-16/801ae189938526cdaf40935d07034c5e.png?imageMogr2/format/webp/quality/50','充值中心'],
+      ['https://t00img.yangkeduo.com/goods/2020-01-14/f8f9fabf561700ef6687318300c7713a.png?imageMogr2/sharpen/50/strip%7CimageView2/2/w/117/q/80/format/webp','限时秒杀'],
+      ['https://t00img.yangkeduo.com/goods/2020-01-14/0fab520471880b5728fb7150d77f5390.png?imageMogr2/sharpen/50/strip%7CimageView2/2/w/117/q/80/format/webp','充值中心'],
     ],
     [
-      ['https://t00img.yangkeduo.com/goods/2019-12-12/f7194265c2fad9844b2e91e785a4b73d.gif','断码清仓'],
-      ['https://t00img.yangkeduo.com/goods/2019-10-16/3112fa31581efa603edaa0d8748139f0.png?imageMogr2/format/webp/quality/50','品牌特卖'],
+      ['https://t00img.yangkeduo.com/goods/2020-02-23/8facf197fb83c69f88eeb9ade1ef1e33.gif?imageMogr2/sharpen/50/strip%7CimageView2/2/w/117/q/80/format/webp','断码清仓'],
+      ['https://t00img.yangkeduo.com/goods/2020-01-14/eba94a51bf0d08fb9d123cbca8544e18.png?imageMogr2/sharpen/50/strip%7CimageView2/2/w/117/q/80/format/webp','品牌特卖'],
     ],
     [
-      ['https://t00img.yangkeduo.com/goods/images/2019-08-25/6c9660932b94227f1a937d191aeacdf5.png?imageMogr2/format/webp/quality/50','新衣馆'],
-      ['https://t00img.yangkeduo.com/goods/images/2019-07-10/04ec5c84906afb5b28b852b167a14ddf.png?imageMogr2/format/webp/quality/50','现金签到'],
+      ['https://t00img.yangkeduo.com/goods/2020-01-14/bc63ae848c923737bd799b96d5219f85.png?imageMogr2/sharpen/50/strip%7CimageView2/2/w/117/q/80/format/webp','新衣馆'],
+      ['https://t00img.yangkeduo.com/goods/2020-01-23/a545a01001efff18a7355e15e0bfe0a3.png?imageMogr2/sharpen/50/strip%7CimageView2/2/w/117/q/80/format/webp','现金签到'],
     ],
     [
-      ['https://t00img.yangkeduo.com/goods/images/2019-01-30/5667b3f1eaa8bb379303afb3934d1bc8.png?imageMogr2/format/webp/quality/50','多多果园'],
-      ['https://t00img.yangkeduo.com/goods/images/2019-02-05/1351e256a0319a6885761b937d06d581.png?imageMogr2/format/webp/quality/50','金猪赚大钱'],
+      ['https://t00img.yangkeduo.com/goods/2020-01-14/b39df4af9b17ba0d063c04da0aea85aa.png?imageMogr2/sharpen/50/strip%7CimageView2/2/w/117/q/80/format/webp','多多果园'],
+      ['https://t00img.yangkeduo.com/goods/2020-01-14/9023c6c212ca7ed147ddfa28c1a13c59.png?imageMogr2/sharpen/50/strip%7CimageView2/2/w/117/q/80/format/webp','金猪赚大钱'],
     ],
     [
-      ['https://t00img.yangkeduo.com/goods/images/2018-10-07/c671f2c49805658697cc0f72fff87eb3.png?imageMogr2/format/webp/quality/50','9块9特卖'],
-      ['https://t00img.yangkeduo.com/goods/images/2018-10-28/27e48ad452991eeb8fd0559a0d3b60ff.png?imageMogr2/format/webp/quality/50','电器城'],
+      ['https://t00img.yangkeduo.com/goods/2020-01-14/8ed387bd5d07f45ce6fee30a0ab80e80.png?imageMogr2/sharpen/50/strip%7CimageView2/2/w/117/q/80/format/webp','9块9特卖'],
+      ['https://t00img.yangkeduo.com/goods/2020-01-19/617e5544f4e923c683ba601f8d39cd74.png?imageMogr2/sharpen/50/strip%7CimageView2/2/w/117/q/80/format/webp','电器城'],
     ],
     [
-      ['https://t00img.yangkeduo.com/goods/images/2019-02-15/b329c4673337e18030f1211df38a543b.png?imageMogr2/format/webp/quality/50','助力享免单'],
-      ['https://t03img.yangkeduo.com/images/2018-05-16/a666ac01e718dd06231a722baa6fa935.png?imageMogr2/format/webp/quality/50','爱逛街'],
+      ['https://t00img.yangkeduo.com/goods/2020-01-14/37fe68d866cb25a887beeb74699196b9.png?imageMogr2/sharpen/50/strip%7CimageView2/2/w/117/q/80/format/webp','助力享免单'],
+      ['https://t00img.yangkeduo.com/goods/2020-01-14/86e1e2cd7cdedc81d85840de70db8830.png?imageMogr2/sharpen/50/strip%7CimageView2/2/w/117/q/80/format/webp','爱逛街'],
     ],
     [
-      ['https://t10img.yangkeduo.com/images/2018-05-16/712fc1e7f4f7b0572257ef162b5185a9.png?imageMogr2/format/webp/quality/50','天天领现金'],
-      ['https://t00img.yangkeduo.com/goods/images/2019-02-15/1ddd6e21a8281e794dec6ef736867290.png?imageMogr2/format/webp/quality/50','砍价免费拿'],
+      ['https://t00img.yangkeduo.com/goods/2020-01-14/268178927edd263209650e1c189f5662.png?imageMogr2/sharpen/50/strip%7CimageView2/2/w/117/q/80/format/webp','天天领现金'],
+      ['https://t00img.yangkeduo.com/goods/2020-01-14/106c4357375875825f204a28cd7d3387.png?imageMogr2/sharpen/50/strip%7CimageView2/2/w/117/q/80/format/webp','砍价免费拿'],
     ],
     [
       ['https://t05img.yangkeduo.com/images/2018-05-04/c71c9acd8b48203a704f6c0951caddc0.png?imageMogr2/format/webp/quality/50','1分抽大奖'],
       ['https://t00img.yangkeduo.com/goods/images/2019-04-12/80f3af132fae04453792464bb837ca02.png?imageMogr2/format/webp/quality/50','多多爱消除'],
     ],
     [
-      ['https://t00img.yangkeduo.com/goods/images/2019-01-27/76826abcd09fe76657f07a901db83698.png?imageMogr2/format/webp/quality/50','省钱月卡'],
-      ['https://t00img.yangkeduo.com/goods/images/2019-01-20/d36b7af30da354cb2c8ad4ea7bd819cd.png?imageMogr2/format/webp/quality/50','每日好店'],
+      ['https://t00img.yangkeduo.com/goods/2020-01-14/54ece7ca8c54cd8925d631323659e42f.png?imageMogr2/sharpen/50/strip%7CimageView2/2/w/117/q/80/format/webp','省钱月卡'],
+      ['https://t00img.yangkeduo.com/goods/2020-01-14/5bbeabdd18c4f6ca6884ca23f66f8a00.png?imageMogr2/sharpen/50/strip%7CimageView2/2/w/117/q/80/format/webp','每日好店'],
     ]
 
 

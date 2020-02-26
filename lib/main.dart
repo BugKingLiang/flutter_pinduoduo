@@ -1,19 +1,18 @@
 import 'dart:io';
 
+import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pingduoduo/Application.dart';
 import 'package:pingduoduo/pages/category/category.dart';
 import 'package:pingduoduo/pages/home/home.dart';
 import 'package:pingduoduo/pages/member/member.dart';
 import 'package:pingduoduo/pages/message/msessage.dart';
 import 'package:pingduoduo/pages/recommend/recommend.dart';
-import 'package:pingduoduo/pages/search/search_page.dart';
-import 'package:pingduoduo/pages/search/search_result_page.dart';
-import 'package:pingduoduo/test.dart';
+import 'package:pingduoduo/router/router.dart';
 import 'package:pingduoduo/util/color_constant.dart';
 import 'package:pingduoduo/util/image_utls.dart';
-import 'package:pingduoduo/widgets/pop_widget.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 void main() {
@@ -27,8 +26,16 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
+
+  MyApp(){
+    Router router = Router();
+    Routes.configureRouter(router);
+    Application.router = router;
+  }
+
   @override
   _MyAppState createState() => _MyAppState();
+
 }
 
 class _MyAppState extends State<MyApp> {
@@ -72,11 +79,11 @@ class _MyAppState extends State<MyApp> {
     ];
 
     _bodyPgges = [
-      /*HomePage(),*/
-      SearchResoutPage(),
+      HomePage(),
       /*TestPage(),*/
-      SearchPage(),
-      /*RecommendPage(),*/
+      /*SearchResoutPage(),*/
+      /*HomePage(),*/
+      RecommendPage(),
       CagegoryPage(),
       MessagePage(),
       MemberPage()
@@ -90,6 +97,7 @@ class _MyAppState extends State<MyApp> {
       enableBallisticLoad: true,
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
+          onGenerateRoute: Application.router.generator,
           home: Scaffold(
             bottomNavigationBar: CupertinoTabBar(
                 currentIndex: this._currentIndex,

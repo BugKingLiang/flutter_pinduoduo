@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pingduoduo/bean/flow_tag_bean.dart';
@@ -21,7 +22,7 @@ class _SearchPageState extends State<SearchPage> {
 
   var historyData;
   TextEditingController _controller = TextEditingController();
-  bool showHistoryPage = true;
+//  bool showHistoryPage ;
 
 
   @override
@@ -31,6 +32,7 @@ class _SearchPageState extends State<SearchPage> {
     historyData[MockData.search_history_key] = <FlowTagBean>[];
 
     spm = SearchProviderModel.init(MockData.findData, MockData.recommendData,historyData);
+//    showHistoryPage =spm.showHistoryPage;
 
     //测试数据
     /*SPUtils.instance
@@ -50,11 +52,15 @@ class _SearchPageState extends State<SearchPage> {
 
 
   }
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     ScreenUtil.getInstance().init(context);
-
     return Scaffold(
       appBar: PreferredSize(
           child: AppBar(
@@ -80,11 +86,11 @@ class _SearchPageState extends State<SearchPage> {
 
                       Offstage(
                         child: HistoryRecommendWidget(),
-                        offstage: !showHistoryPage,
+                        offstage: !spm.showHistoryPage,
                       ),
                       Offstage(
-                        offstage: showHistoryPage,
-                        child: SearchSuggestListWidget(),
+                        offstage: spm.showHistoryPage,
+                        child: SearchSuggestListWidget(_controller),
                       )
 
                     ],
@@ -104,8 +110,9 @@ class _SearchPageState extends State<SearchPage> {
       if(inputText.isEmpty){
         spm.clearSearchSuggets();
       }
-      showHistoryPage = inputText.isEmpty;
+      spm.showHistoryPage = inputText.isEmpty;
     });
+
 
 
     if (inputText.isNotEmpty) {
