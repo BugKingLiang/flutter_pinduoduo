@@ -6,10 +6,16 @@
 |------------- |------------- |-------------|-------------|-------------|
 |![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/2.jpg)|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/3.jpg)|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/4.jpg)|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/5.jpg)|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/6.jpg)|
 
+|    搜索         | 搜索结果           |    搜索筛选 |
+|------------- |------------- |------------- |
+|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/11.jpg)|
+|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/12.jpg)|
+|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/13.jpg)|
+
 ## 已完成和后续
 
 * 首页、推荐、分类、聊天、个人中心(已完成)
-* 搜索 (后续)
+* 搜索 (已完成)
 * 商品详情 (后续)
 * 等等等等等等等等等等等等等等等
 * 更不更新看心情和时间
