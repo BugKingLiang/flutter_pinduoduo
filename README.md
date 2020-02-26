@@ -8,9 +8,7 @@
 
 |    搜索         | 搜索结果           |    搜索筛选 |
 |------------- |------------- |------------- |
-|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/11.jpg)|![]
-(https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/12.jpg)|![]
-(https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/13.jpg)|
+|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/11.jpg)|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/12.jpg)|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/13.jpg)|
 
 ## 已完成和后续
 
