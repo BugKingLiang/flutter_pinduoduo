@@ -153,12 +153,14 @@ class _PopularPageState extends State<PopularPage>
       if (goodsItem['type'] != null) {
         widget = HorizontalSlideWidgets(goodsItem);
       } else {
+        print('${goodsItem['near_group']}  ================= ${index}');
+        var nearGroup = goodsItem['near_group'];
         widget = GoodsItemWidget(
             goodsItem['hd_thumb_url'],
             goodsItem['goods_name'],
             goodsItem['group']['price'],
             goodsItem['cnt'],
-            goodsItem['near_group']['list']);
+           nearGroup != null?nearGroup['list']:null);
       }
 
       return widget;

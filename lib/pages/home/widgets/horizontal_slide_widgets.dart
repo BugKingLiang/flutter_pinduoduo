@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pingduoduo/util/color_constant.dart';
 import 'package:pingduoduo/util/image_utls.dart';
+import 'package:pingduoduo/util/utils.dart';
 import 'package:pingduoduo/widgets/circular_image_widget.dart';
 import 'package:pingduoduo/widgets/divider_dart.dart';
 
@@ -15,7 +16,11 @@ class HorizontalSlideWidgets extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int type = data['type'] as int;
+    print(' type  = ${type}');
     switch (type) {
+      case 10:
+        return _createType10(data['subject_info'], data['subject_list']);
+        break;
       case 11 :
         {
           return _createGroupBuying(data['subject_info'], data['subject_list']);
@@ -279,6 +284,61 @@ class HorizontalSlideWidgets extends StatelessWidget {
           DividerWidget(height: 10),
         ],
       ),
+    );
+  }
+
+  Widget _createType10(var subject_info,List subject_list){
+    return Container(
+      color: Colors.white,
+      height: ScreenUtil.getInstance().setHeight(600),
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      child: Column(
+        children: <Widget>[
+          Container(
+            height: ScreenUtil.getInstance().setHeight(150),
+            child: Row(
+
+              children: <Widget>[
+                Expanded(child: Align(
+                  alignment: Alignment.centerRight,
+                    child: Text('${subject_info['jump_text']} >')))
+              ],
+
+            ),
+          ),
+
+          Expanded(child: GridView.builder(
+            shrinkWrap: true,physics: NeverScrollableScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3, crossAxisSpacing: 5,childAspectRatio: 0.75),
+              itemCount: subject_list.length,
+              itemBuilder: (context, index) {
+                    var item = subject_list[index];
+                return Column(
+                  children: <Widget>[
+                    CachedNetworkImage(imageUrl: item['hd_thumb_url'],fit: BoxFit.cover,),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+
+                        Text('¥${Utils.convertPrice(item['price'])}',style: TextStyle(color: Color(0xffe02e24),fontSize: 16,fontWeight: FontWeight.w600),),
+                        Container(
+                          margin: EdgeInsets.only(left: 3),
+                            child: Text('${Utils.convertPrice(item['normal_price'])}',style: TextStyle(color: Color(0xff9c9c9c),fontSize: 12,decoration: TextDecoration.lineThrough))),
+                      ],),
+                    )
+
+                  ],
+                );
+              }))
+
+
+        ],
+
+      )
+
     );
   }
 

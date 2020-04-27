@@ -206,13 +206,13 @@ class _RightCategoryWidgetState extends State<RightCategoryWidget> {
         slivers: <Widget>[
           SliverToBoxAdapter(
             child: Offstage(
-              offstage: bannderInfo == null,
+              offstage: bannderInfo == null ||(bannderInfo != null &&bannderInfo['image_url'] == null),
               child: Container(
                   height: ScreenUtil.getInstance().setHeight(300),
                   padding: EdgeInsets.all(5),
                   child: Image(
                       image: CachedNetworkImageProvider(
-                          bannderInfo != null ? bannderInfo['image_url'] : ''),
+                          bannderInfo != null && bannderInfo['image_url'] != null? bannderInfo['image_url'] : ''),
                       fit: BoxFit.fill)),
             ),
           ),
