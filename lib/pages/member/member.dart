@@ -318,8 +318,7 @@ class _MemberPageState extends State<MemberPage> {
                   return GoodsInfoWidget(
                       item['hd_thumb_url'],
                       //切记不要直接使用ScreenUtil.getInstance().width/2
-                      ScreenUtil.getInstance()
-                      .setWidth(ScreenUtil.getInstance().width / 2),
+                     ScreenUtil.screenWidth / 2,
                   iconList != null ? iconList[0]['url'] : null,
                   item['goods_name'],
                   item['tag_list'],

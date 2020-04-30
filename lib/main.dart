@@ -4,12 +4,14 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pingduoduo/Application.dart';
 import 'package:pingduoduo/pages/category/category.dart';
 import 'package:pingduoduo/pages/home/home.dart';
 import 'package:pingduoduo/pages/member/member.dart';
 import 'package:pingduoduo/pages/message/msessage.dart';
 import 'package:pingduoduo/pages/recommend/recommend.dart';
+import 'package:pingduoduo/pages/subsidy/subsidy_page.dart';
 import 'package:pingduoduo/router/router.dart';
 import 'package:pingduoduo/util/color_constant.dart';
 import 'package:pingduoduo/util/image_utls.dart';
@@ -24,21 +26,30 @@ void main() {
     SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
   }
 }
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MainPage(),
+    );
+  }
+}
 
-class MyApp extends StatefulWidget {
 
-  MyApp(){
+class MainPage extends StatefulWidget {
+
+  MainPage(){
     Router router = Router();
     Routes.configureRouter(router);
     Application.router = router;
   }
 
   @override
-  _MyAppState createState() => _MyAppState();
+  _MainPageState createState() => _MainPageState();
 
 }
 
-class _MyAppState extends State<MyApp> {
+class _MainPageState extends State<MainPage> {
   PageController _pageController = PageController();
   int _currentIndex = 0;
   var titleNames = ['首页', '推荐', '分类', '聊天', '个人中心'];
@@ -92,13 +103,15 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.getInstance()..init(context);
     return RefreshConfiguration(
       headerBuilder: () => MaterialClassicHeader(),
       enableBallisticLoad: true,
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          onGenerateRoute: Application.router.generator,
-          home: Scaffold(
+//          onGenerateRoute: Application.router.generator,
+         home: Scaffold(body: SubsidyPage(),),
+         /* home: Scaffold(
             bottomNavigationBar: CupertinoTabBar(
                 currentIndex: this._currentIndex,
                 onTap: (index) {
@@ -116,7 +129,8 @@ class _MyAppState extends State<MyApp> {
               physics: NeverScrollableScrollPhysics(),
               controller: _pageController,
             ),
-          )),
+          )*/
+      ),
     );
   }
 

@@ -14,7 +14,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   dio: ^3.0.7
   flutter_swiper : ^1.1.6
-  flutter_screenutil: ^0.7.0
+  flutter_screenutil: ^0.4.1
   toast: ^0.1.5
   pull_to_refresh: ^1.5.7
   provider: ^3.2.0
@@ -24,6 +24,8 @@ dependencies:
   flutter_svg: ^0.15.0
   shared_preferences: ^0.5.6
   fluro: ^1.5.1
+
+  extended_nested_scroll_view: ^0.4.0
 
 dev_dependencies:
   flutter_test:

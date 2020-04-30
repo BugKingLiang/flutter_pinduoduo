@@ -16,5 +16,48 @@ class Utils {
     return (price/100).toStringAsFixed(2);
 
   }
+  //转换毫秒 到 时分秒
+  static convertMillisecond(int millisecond){
+
+    int millis=1;
+    int seconds=1000*millis;
+    int minutes=60*seconds;
+    int hours=60*minutes;
+    int days=24*hours;
+    String date ='';
+
+//    if(millisecond/days>=1){
+//      //天
+//      date +='${(millisecond/days).toInt()}:';
+//
+//    }
+
+
+    if(millisecond%days/hours>=1){
+      //小时
+      date+='${(millisecond%days/hours).toInt()}:';
+    }
+
+    if(millisecond%days%hours/minutes>=1){
+      //分钟
+      date+='${(millisecond%days%hours/minutes).toInt()}:';
+
+    }else{
+      date+='00';
+    }
+
+    if(millisecond%days%hours%minutes/seconds>=1){
+      //秒
+      date+='${(millisecond%days%hours%minutes/seconds).toInt()}:';
+    }else{
+      date+='00';
+    }
+
+//    if(millisecond%days%hours%minutes%seconds/millis>=1){
+//      //毫秒
+//      date+='${(millisecond%days%hours%minutes%seconds/millis)}';
+//    }
+    return date;
+  }
 
 }
