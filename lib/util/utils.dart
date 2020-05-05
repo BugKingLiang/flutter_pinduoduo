@@ -48,7 +48,7 @@ class Utils {
 
     if(millisecond%days%hours%minutes/seconds>=1){
       //秒
-      date+='${(millisecond%days%hours%minutes/seconds).toInt()}:';
+      date+='${(millisecond%days%hours%minutes/seconds).toInt()}';
     }else{
       date+='00';
     }

@@ -5,6 +5,7 @@ import 'package:pingduoduo/util/color_constant.dart';
 import 'package:pingduoduo/widgets/circular_image_widget.dart';
 import 'package:pingduoduo/util/utils.dart';
 import 'package:pingduoduo/widgets/divider_dart.dart';
+import 'package:pingduoduo/widgets/goods_info_title_widget.dart';
 
 class GoodsInfoWidget extends StatelessWidget {
   var _goodsImage;
@@ -49,8 +50,7 @@ class GoodsInfoWidget extends StatelessWidget {
                 children: <Widget>[
                   //标题
                   Container(
-                    child:
-                        Text.rich(TextSpan(children: _createIconsWithTitle())),
+                    child:GoodsInfoTitleWidget(leadingIcons: _icon_list,title: _goods_name),
                   ),
 
                   _createPropTagWidget(),
@@ -110,26 +110,6 @@ class GoodsInfoWidget extends StatelessWidget {
     );
   }
 
-//标题
-  List<InlineSpan> _createIconsWithTitle() {
-    List<InlineSpan> spans = List();
-
-    var tagSpan = _icon_list?.map((value) {
-      return WidgetSpan(
-          alignment: PlaceholderAlignment.middle,
-          child: Image.network(value['url'],
-              width: ScreenUtil.getInstance().setWidth(70),
-              height: ScreenUtil.getInstance().setHeight(30)));
-    })?.toList();
-
-    if (tagSpan != null) {
-      spans.addAll(tagSpan);
-    }
-
-    spans.add(TextSpan(text: _goods_name, style: TextStyle(color: Colors.black)));
-
-    return spans;
-  }
 
   Widget _createPropTagWidget() {
     String tagString ='';

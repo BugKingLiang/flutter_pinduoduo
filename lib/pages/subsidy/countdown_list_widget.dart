@@ -69,7 +69,7 @@ class _CountDownWidgetState extends State<CountDownWidget> with TickerProviderSt
   void _countdown(){
 
     timer = Timer.periodic(Duration(seconds: 1), (Timer timer){
-      if(mounted) {
+//      if(mounted) {
        setState(() {
 
          aaa = Utils.convertMillisecond(ss);
@@ -77,7 +77,7 @@ class _CountDownWidgetState extends State<CountDownWidget> with TickerProviderSt
        });
 
 
-        }
+//        }
     });
 
   }
@@ -159,7 +159,7 @@ class _CountDownWidgetState extends State<CountDownWidget> with TickerProviderSt
                         borderRadius: BorderRadius.circular(3),
                         color: Color(0xfff85064),
                       ),
-                      child: Center(child: Text(aaa,style: TextStyle(color: Colors.white,fontSize: 12))),
+                      child: Center(child: Text('距离结束 ${aaa}',style: TextStyle(color: Colors.white,fontSize: 12))),
                     ),
 
                     Container(
@@ -230,6 +230,7 @@ class _CountDownWidgetState extends State<CountDownWidget> with TickerProviderSt
 
 
   }
+
 
   List<Widget> _createNearBuyGroup(List<String> images){
 
