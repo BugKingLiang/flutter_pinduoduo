@@ -33,7 +33,7 @@ class GoodsItemWidget extends StatelessWidget {
         children: <Widget>[
 
           CachedNetworkImage(imageUrl: goodsInfo['hd_thumb_url'],
-              width: ScreenUtil.getInstance().setHeight(400)),
+              width: ScreenUtil.getInstance().setHeight(350)),
           Expanded(child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Column(
@@ -73,6 +73,7 @@ class GoodsItemWidget extends StatelessWidget {
 
                     //价格,销量
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text.rich(TextSpan(style: TextStyle(color: Color(0xffe02e24)),
                           children:[
