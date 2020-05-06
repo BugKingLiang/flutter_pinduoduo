@@ -40,11 +40,9 @@ class GoodsInfoWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(
-//            constraints: BoxConstraints(maxHeight: 100,maxWidth: 100),
               child: CachedNetworkImage(imageUrl:_gooddsImage,
                   fit: BoxFit.cover,
-                  width: _goodsImageSize,
-                  height: _goodsImageSize)),
+                  width: _goodsImageSize)),
           Row(
             children: <Widget>[
               _goodsActionImage != null?

@@ -71,10 +71,11 @@ class _RecommendPageState extends State<RecommendPage> with AutomaticKeepAliveCl
                 itemBuilder: (context, index) {
                   var item = _data[index];
                   var iconList = item['icon_list'];
+                  print('${ScreenUtil.screenWidth / 2} =====');
                   return GoodsInfoWidget(
                       item['hd_thumb_url'],
                       //切记不要直接使用ScreenUtil.getInstance().width/2
-                      ScreenUtil.getInstance().width / 2,
+                      ScreenUtil.screenWidth / 2,
                       iconList != null ? iconList[0]['url'] : null,
                       item['goods_name'],
                       item['tag_list'],

@@ -26,19 +26,19 @@ void main() {
     SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
   }
 }
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MainPage(),
     );
   }
 }
 
-
 class MainPage extends StatefulWidget {
-
-  MainPage(){
+  MainPage() {
     Router router = Router();
     Routes.configureRouter(router);
     Application.router = router;
@@ -46,7 +46,6 @@ class MainPage extends StatefulWidget {
 
   @override
   _MainPageState createState() => _MainPageState();
-
 }
 
 class _MainPageState extends State<MainPage> {
@@ -91,9 +90,6 @@ class _MainPageState extends State<MainPage> {
 
     _bodyPgges = [
       HomePage(),
-      /*TestPage(),*/
-      /*SearchResoutPage(),*/
-      /*HomePage(),*/
       RecommendPage(),
       CagegoryPage(),
       MessagePage(),
@@ -109,9 +105,8 @@ class _MainPageState extends State<MainPage> {
       enableBallisticLoad: true,
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
-//          onGenerateRoute: Application.router.generator,
-         home: Scaffold(body: SubsidyPage(),),
-         /* home: Scaffold(
+          onGenerateRoute: Application.router.generator,
+          home: Scaffold(
             bottomNavigationBar: CupertinoTabBar(
                 currentIndex: this._currentIndex,
                 onTap: (index) {
@@ -120,8 +115,7 @@ class _MainPageState extends State<MainPage> {
                     this._currentIndex = index;
                   });
                 },
-                items:_createTabBarItem()
-                ),
+                items: _createTabBarItem()),
             body: PageView.builder(
               itemBuilder: (context, index) {
                 return _bodyPgges[index];
@@ -129,19 +123,15 @@ class _MainPageState extends State<MainPage> {
               physics: NeverScrollableScrollPhysics(),
               controller: _pageController,
             ),
-          )*/
-      ),
+          )),
     );
   }
 
-  List<BottomNavigationBarItem> _createTabBarItem(){
-
+  List<BottomNavigationBarItem> _createTabBarItem() {
     List<BottomNavigationBarItem> tabBarItems = List();
     for (int i = 0; i < titleNames.length; i++) {
       tabBarItems.add(BottomNavigationBarItem(
-          icon: _getTabImageByIndex(i),
-          title: _getTabTitleByIndex(i)));
-
+          icon: _getTabImageByIndex(i), title: _getTabTitleByIndex(i)));
     }
 
     return tabBarItems;
@@ -154,7 +144,6 @@ class _MainPageState extends State<MainPage> {
       height: 20,
     );
   }
-
 
   Image _getTabImageByIndex(int index) {
     if (_currentIndex == index) {

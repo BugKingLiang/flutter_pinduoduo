@@ -1,16 +1,14 @@
-
-
-import 'dart:async';
-
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart' hide NestedScrollView;
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
+import 'package:flutter/material.dart' hide NestedScrollView;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pingduoduo/Application.dart';
 import 'package:pingduoduo/pages/subsidy/countdown_list_widget.dart';
 import 'package:pingduoduo/pages/subsidy/subsidy_goods_list_widget.dart';
-import 'package:pingduoduo/storage/sp_data.dart';
+import 'package:pingduoduo/provider/countdown_provider.dart';
 import 'package:pingduoduo/util/image_utls.dart';
+import 'package:provider/provider.dart';
 
 //  百亿补贴页面
 class SubsidyPage extends StatefulWidget {
@@ -37,7 +35,9 @@ class _SubsidyPageState extends State<SubsidyPage> with TickerProviderStateMixin
   String _headerBackImage;
   String _headerShareImage;
   Color _headerSearchBackroundColor = Colors.white;
-  Timer timer;
+
+
+  CountDownProvider countdowValue = CountDownProvider();
 
 
   @override
@@ -47,18 +47,18 @@ class _SubsidyPageState extends State<SubsidyPage> with TickerProviderStateMixin
 
     _tabController = TabController(length: tabs.length, vsync: this);
     _parentScrollContrller.addListener(_onScrollViewListener);
-
+    countdowValue.countdown();
     super.initState();
   }
-  void _countdown(){
-
-    timer = Timer.periodic(Duration(seconds: 1), (Timer timer){
-      print('${DateTime.now()} ======');
-    });
-
+@override
+  void dispose() {
+    super.dispose();
+    _tabController.dispose();
+    _parentScrollContrller.dispose();
+    countdowValue.cancelTimer();
   }
 
-
+  //滚动监听
   void _onScrollViewListener(){
     double offset = _parentScrollContrller.offset;
     setState(() {
@@ -96,41 +96,46 @@ class _SubsidyPageState extends State<SubsidyPage> with TickerProviderStateMixin
     _headerHeight = ScreenUtil.getInstance().setHeight(1500);
 
 
-    return Scaffold(
-      body: NestedScrollView(
-        controller: _parentScrollContrller,
-          headerSliverBuilder: (c, f){
-            return <Widget>[
-              _createHeaderWidget()
-            ];
+    return ChangeNotifierProvider.value(
+      value: countdowValue,
+      child: Scaffold(
+        body: NestedScrollView(
+          controller: _parentScrollContrller,
+            headerSliverBuilder: (c, f){
+              return <Widget>[
+                _createHeaderWidget()
+              ];
+            },
+          pinnedHeaderSliverHeightBuilder: () {
+            return pinnedHeaderHeight;
           },
-        pinnedHeaderSliverHeightBuilder: () {
-          return pinnedHeaderHeight;
-        },
-        innerScrollPositionKeyBuilder: () {
-          var index = "Tab";
-          index += _tabController.index.toString();
+          innerScrollPositionKeyBuilder: () {
+            var index = "Tab";
+            index += _tabController.index.toString();
 
-          return Key(index);
-        },
-        body: Column(
-          children: <Widget>[
-            _createTabBarWidget(),
-            Expanded(child: TabBarView(
-              controller: _tabController,
-                children: _createBodyWidgets()))
-          ],
+            return Key(index);
+          },
+          body: Column(
+            children: <Widget>[
+              _createTabBarWidget(),
+              Expanded(child: TabBarView(
+                controller: _tabController,
+                  children: _createBodyWidgets()))
+            ],
+
+          ),
 
         ),
 
       ),
-
     );
 
   }
   //创建头部widget
   SliverAppBar _createHeaderWidget(){
     return SliverAppBar(
+
+      automaticallyImplyLeading: false,
       backgroundColor: Colors.white,
       pinned: true,
       floating: true,
@@ -145,7 +150,11 @@ class _SubsidyPageState extends State<SubsidyPage> with TickerProviderStateMixin
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              SvgPicture.asset(_headerBackImage,fit: BoxFit.cover,width: ScreenUtil.getInstance().setWidth(90),height: ScreenUtil.getInstance().setWidth(90)),
+              GestureDetector(
+                onTap: (){
+                  Application.router.pop(context);
+                },
+                  child: SvgPicture.asset(_headerBackImage,fit: BoxFit.cover,width: ScreenUtil.getInstance().setWidth(90),height: ScreenUtil.getInstance().setWidth(90))),
               Expanded(child: Container(
                   margin: EdgeInsets.symmetric(horizontal: 5),
                   decoration: BoxDecoration(
@@ -254,18 +263,21 @@ class _SubsidyPageState extends State<SubsidyPage> with TickerProviderStateMixin
 
   Widget _createTabBarWidget(){
 
-    return TabBar(
-        controller: _tabController,
-        labelColor: Colors.redAccent,
-        unselectedLabelColor: Colors.black87,
-        indicatorColor: Colors.redAccent,
-        indicatorSize: TabBarIndicatorSize.label,
-        isScrollable: true,
-        tabs: tabs.map((value){
-          return Tab(text: value);
+    return Container(
+      color: Colors.white,
+      child: TabBar(
+          controller: _tabController,
+          labelColor: Colors.redAccent,
+          unselectedLabelColor: Colors.black87,
+          indicatorColor: Colors.redAccent,
+          indicatorSize: TabBarIndicatorSize.label,
+          isScrollable: true,
+          tabs: tabs.map((value){
+            return Tab(text: value);
 
 
-        }).toList());
+          }).toList()),
+    );
 
 
   }

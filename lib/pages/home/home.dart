@@ -92,7 +92,6 @@ class _HomePageState extends State<HomePage>
               child: TabBarView(
                   controller: _tabController,
                   children: _topTabBarTitle.asMap().keys.map((index) {
-//                    var topTabBarTitle = _topTabBarTitle[index];
                     return index == 0 ?  PopularPage():OtherPage();
                   }).toList()))
         ],
