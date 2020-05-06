@@ -4,16 +4,17 @@
 ## 按照国际惯例,先上图.
 |    首页         | 推荐           |      分类       |聊天|个人中心|
 |------------- |------------- |-------------|-------------|-------------|
-|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/2.jpg)|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/3.jpg)|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/4.jpg)|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/5.jpg)|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/6.jpg)|
+|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/2.png)|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/3.png)|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/4.png)|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/5.png)|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/6.png)|
 
-|    搜索         | 搜索结果           |    搜索筛选 |
-|------------- |------------- |------------- |
-|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/7.jpg)|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/8.jpg)|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/9.jpg)|
+|    搜索         | 搜索结果           |    搜索筛选 |百亿补贴 |
+|------------- |------------- |------------- |------------- |
+|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/7.png)|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/8.png)|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/9.png)|![](https://github.com/BugKingLiang/flutter_pinduoduo/blob/master/screenshot/10.png)|
 
 ## 已完成和后续
 
 * 首页、推荐、分类、聊天、个人中心(已完成)
 * 搜索 (已完成)
+* 百亿补贴(已完成)
 * 商品详情 (后续)
 * 等等等等等等等等等等等等等等等
 * 更不更新看心情和时间
