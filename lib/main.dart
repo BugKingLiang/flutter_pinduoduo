@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pingduoduo/Application.dart';
 import 'package:pingduoduo/pages/category/category.dart';
+import 'package:pingduoduo/pages/goods_detail/goods_detail_page.dart';
 import 'package:pingduoduo/pages/home/home.dart';
 import 'package:pingduoduo/pages/member/member.dart';
 import 'package:pingduoduo/pages/message/msessage.dart';
@@ -103,28 +104,42 @@ class _MainPageState extends State<MainPage> {
     return RefreshConfiguration(
       headerBuilder: () => MaterialClassicHeader(),
       enableBallisticLoad: true,
-      child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          onGenerateRoute: Application.router.generator,
-          home: Scaffold(
-            bottomNavigationBar: CupertinoTabBar(
-                currentIndex: this._currentIndex,
-                onTap: (index) {
-                  _pageController.jumpToPage(index);
-                  setState(() {
-                    this._currentIndex = index;
-                  });
-                },
-                items: _createTabBarItem()),
-            body: PageView.builder(
-              itemBuilder: (context, index) {
-                return _bodyPgges[index];
-              },
-              physics: NeverScrollableScrollPhysics(),
-              controller: _pageController,
-            ),
-          )),
+      child: _testMaterailApp(),
     );
+  }
+
+  MaterialApp _testMaterailApp(){
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          body: GoodsDetailPage()
+        ));
+  }
+
+  MaterialApp _mainMaterialApp(){
+
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        onGenerateRoute: Application.router.generator,
+        home: Scaffold(
+          bottomNavigationBar: CupertinoTabBar(
+              currentIndex: this._currentIndex,
+              onTap: (index) {
+                _pageController.jumpToPage(index);
+                setState(() {
+                  this._currentIndex = index;
+                });
+              },
+              items: _createTabBarItem()),
+          body: PageView.builder(
+            itemBuilder: (context, index) {
+              return _bodyPgges[index];
+            },
+            physics: NeverScrollableScrollPhysics(),
+            controller: _pageController,
+          ),
+        ));
+
   }
 
   List<BottomNavigationBarItem> _createTabBarItem() {
