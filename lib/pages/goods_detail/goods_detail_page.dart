@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:pingduoduo/pages/goods_detail/config_widget.dart';
 import 'package:pingduoduo/util/image_utls.dart';
+import 'package:pingduoduo/widgets/image_text_widget.dart';
 
 //商品详情
 class GoodsDetailPage extends StatefulWidget {
@@ -14,7 +16,7 @@ class GoodsDetailPage extends StatefulWidget {
 class _GoodsDetailPageState extends State<GoodsDetailPage> {
   double _statusBarHeight;
   double _toolbarHeight;
-  List<String> swiperData ;
+  List<String> swiperData;
 
   @override
   void initState() {
@@ -43,32 +45,22 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
           child: Stack(
             children: <Widget>[
 
-              Positioned.fill(child: Container(
-                color: Colors.green,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      height: ScreenUtil.getInstance().setHeight(1000),
-                      child: Swiper(
-                          itemCount:swiperData.length,
-                          autoplay: false,
-                          itemBuilder: (context,index){
-                            return CachedNetworkImage(imageUrl: swiperData[index],fit: BoxFit.fill,);
-                          }),
-                    ),
-                    Container(
+              Positioned.fill(
+                  child: CustomScrollView(
+                    slivers: <Widget>[
+                      _createSwiperWidget(),
+                      SliverToBoxAdapter(child: GoodsConfigWidget(),)
 
-                    ),
-
-
-                  ],
-                ),
-              )),
+                    ],
+                  )),
+              //标题头
               Positioned(
                 left: 0,right: 0,
                   child: _createToolBarWidget()),
+              //底部购买
+              Positioned(
+                  left: 0, right: 0, bottom: 0,
+                  child: _createBottomWidget())
             ],
           ),
         ),
@@ -81,7 +73,7 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
   Widget _createToolBarWidget(){
 
     return Container(
-      color: Colors.white,
+      color: Colors.white.withOpacity(0.1),
       height: _statusBarHeight+_toolbarHeight,
       padding:  EdgeInsets.only(top: _statusBarHeight),
       child: Row(
@@ -105,6 +97,81 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
     );
 
 
+  }
+
+
+
+  SliverToBoxAdapter _createSwiperWidget() {
+    return SliverToBoxAdapter(
+      child: Container(
+        height: ScreenUtil.getInstance().setHeight(1000),
+        child: Swiper(
+            itemCount: swiperData.length,
+            autoplay: false,
+            itemBuilder: (context, index) {
+              return CachedNetworkImage(
+                imageUrl: swiperData[index],
+                fit: BoxFit.fill,);
+            }),
+      ),
+    );
+  }
+
+
+  Widget _createBottomWidget() {
+    return Container(color: Colors.white,
+      height: ScreenUtil.getInstance().setHeight(160),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: ImagetTextWidget('店铺', 'icons/store', filePath: true,
+              imageSize: ScreenUtil.getInstance().setWidth(70),),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: ImagetTextWidget('收藏', 'icons/like', filePath: true,
+              imageSize: ScreenUtil.getInstance().setWidth(70),),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10, right: 20),
+            child: ImagetTextWidget('客服', 'icons/message', filePath: true,
+              imageSize: ScreenUtil.getInstance().setWidth(70),),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              color: Color(0xfff3aba7),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text('¥5500',
+                      style: TextStyle(color: Colors.white, fontSize: 18)),
+                  Text('单独购买',
+                      style: TextStyle(color: Colors.white, fontSize: 18))
+                ],
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              color: Color(0xffe02e24),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text('¥5068',
+                      style: TextStyle(color: Colors.white, fontSize: 18)),
+                  Text('发起拼单',
+                      style: TextStyle(color: Colors.white, fontSize: 18))
+                ],
+              ),
+            ),
+          )
+
+
+        ],),);
   }
 
 
