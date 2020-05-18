@@ -4,9 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:pingduoduo/pages/goods_detail/config_widget.dart';
+import 'package:pingduoduo/pages/goods_detail/group_order_widget.dart';
 import 'package:pingduoduo/pages/goods_detail/title_price_widget.dart';
 import 'package:pingduoduo/util/image_utls.dart';
+import 'package:pingduoduo/widgets/container_divider.dart';
 import 'package:pingduoduo/widgets/image_text_widget.dart';
+import 'package:pingduoduo/widgets/more_container_widget.dart';
 import 'package:pingduoduo/widgets/triangle_shape.dart';
 
 //商品详情
@@ -22,7 +25,6 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
 
   @override
   void initState() {
-
     swiperData = [
       'https://t00img.yangkeduo.com/goods/images/2020-04-29/acdbfd36-caad-4831-8325-acd125f185a6.jpg',
       'https://t00img.yangkeduo.com/goods/images/2020-02-24/c23a3fa9-b3e7-4cf1-8bc6-a6f8b35e9a8b.jpg',
@@ -40,13 +42,11 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
     _toolbarHeight = ScreenUtil.getInstance().setHeight(100);
 
     return MaterialApp(
-
       home: Scaffold(
         body: Container(
           height: ScreenUtil.screenHeight,
           child: Stack(
             children: <Widget>[
-
               Positioned.fill(
                   child: CustomScrollView(
                     slivers: <Widget>[
@@ -54,33 +54,33 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
                       SliverToBoxAdapter(
                         child: TitlePriceWidget(),
                       ),
-                      SliverToBoxAdapter(child: GoodsConfigWidget(),)
-
+                      SliverToBoxAdapter(child: GoodsConfigWidget()),
+                      _createGoodsPromiseWidget(),
+                      SliverToBoxAdapter(child: GroupOrderWidget()),
+                      SliverToBoxAdapter(
+                        child: Container(
+                          height: 300,
+                        ),
+                      )
                     ],
                   )),
               //标题头
-              Positioned(
-                left: 0,right: 0,
-                  child: _createToolBarWidget()),
+              Positioned(left: 0, right: 0, child: _createToolBarWidget()),
               //底部购买
               Positioned(
-                  left: 0, right: 0, bottom: 0,
-                  child: _createBottomWidget())
+                  left: 0, right: 0, bottom: 0, child: _createBottomWidget())
             ],
           ),
         ),
-
-
       ),
     );
   }
 
-  Widget _createToolBarWidget(){
-
+  Widget _createToolBarWidget() {
     return Container(
       color: Colors.white.withOpacity(0.1),
-      height: _statusBarHeight+_toolbarHeight,
-      padding:  EdgeInsets.only(top: _statusBarHeight),
+      height: _statusBarHeight + _toolbarHeight,
+      padding: EdgeInsets.only(top: _statusBarHeight),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -88,24 +88,28 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: SvgPicture.asset(ImageUtils.getSvgImagePath('back_black'),width: _toolbarHeight,),
+            child: SvgPicture.asset(
+              ImageUtils.getSvgImagePath('back_black'),
+              width: _toolbarHeight,
+            ),
           ),
-          Expanded(child: Offstage(child: Container(),offstage: true,)),
+          Expanded(
+              child: Offstage(
+            child: Container(),
+            offstage: true,
+          )),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Image.asset(ImageUtils.getImagePath('icons/share'),),
+            child: Image.asset(
+              ImageUtils.getImagePath('icons/share'),
+            ),
           )
         ],
       ),
-
-
     );
-
-
   }
 
-
-
+  //轮播图
   SliverToBoxAdapter _createSwiperWidget() {
     return SliverToBoxAdapter(
       child: Container(
@@ -116,33 +120,91 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
             itemBuilder: (context, index) {
               return CachedNetworkImage(
                 imageUrl: swiperData[index],
-                fit: BoxFit.fill,);
+                fit: BoxFit.fill,
+              );
             }),
       ),
     );
   }
 
+  SliverToBoxAdapter _createGoodsPromiseWidget() {
+    double itemHeight = ScreenUtil.getInstance().setHeight(150);
+    return SliverToBoxAdapter(
+      child: Column(
+        children: <Widget>[
+          ContainderDivider(child:
+            Container(
+                height: itemHeight,
+                child: MoreContainerWidget(
+                    child: Text('顺丰包邮  退货包运费 正品发票 全国联保',
+                        style: TextStyle(color: Color(0xff58595b))),
+                    paddingLeft: 10)),
+            showBottomDivider: false,
+          ),
+          ContainderDivider(child:
+            Container(
+                height: itemHeight,
+                child: MoreContainerWidget(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Image.asset(ImageUtils.getImagePath('icons/guarantee')),
+                        Text('正品险由中国人保财险承保')
+                      ],
+                    ),
+                    paddingLeft: 5)),
+            topDividerLeftMargin: 10,
+            showBottomDivider: false,
+          ),
+          ContainderDivider(child:Container(
+              height: itemHeight,
+              child: MoreContainerWidget(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Image.asset(ImageUtils.getImagePath('icons/order')),
+                      Text('「小米智能机畅销榜」前20名')
+                    ],
+                  ),
+                  paddingLeft: 10)),topDividerLeftMargin: 10,)
+        ],
+      ),
+    );
+  }
 
   Widget _createBottomWidget() {
-    return Container(color: Colors.white,
+    return Container(
+      color: Colors.white,
       height: ScreenUtil.getInstance().setHeight(160),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: ImagetTextWidget('店铺', 'icons/store', filePath: true,
-              imageSize: ScreenUtil.getInstance().setWidth(70),),
+            child: ImagetTextWidget(
+              '店铺',
+              'icons/store',
+              filePath: true,
+              imageSize: ScreenUtil.getInstance().setWidth(70),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.only(right: 10),
-            child: ImagetTextWidget('收藏', 'icons/like', filePath: true,
-              imageSize: ScreenUtil.getInstance().setWidth(70),),
+            child: ImagetTextWidget(
+              '收藏',
+              'icons/like',
+              filePath: true,
+              imageSize: ScreenUtil.getInstance().setWidth(70),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 20),
-            child: ImagetTextWidget('客服', 'icons/message', filePath: true,
-              imageSize: ScreenUtil.getInstance().setWidth(70),),
+            child: ImagetTextWidget(
+              '客服',
+              'icons/message',
+              filePath: true,
+              imageSize: ScreenUtil.getInstance().setWidth(70),
+            ),
           ),
           Expanded(
             flex: 1,
@@ -174,10 +236,8 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
               ),
             ),
           )
-
-
-        ],),);
+        ],
+      ),
+    );
   }
-
-
 }
