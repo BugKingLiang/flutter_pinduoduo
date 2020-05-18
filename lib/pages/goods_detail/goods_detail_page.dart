@@ -4,8 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:pingduoduo/pages/goods_detail/config_widget.dart';
+import 'package:pingduoduo/pages/goods_detail/title_price_widget.dart';
 import 'package:pingduoduo/util/image_utls.dart';
 import 'package:pingduoduo/widgets/image_text_widget.dart';
+import 'package:pingduoduo/widgets/triangle_shape.dart';
 
 //商品详情
 class GoodsDetailPage extends StatefulWidget {
@@ -49,6 +51,9 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
                   child: CustomScrollView(
                     slivers: <Widget>[
                       _createSwiperWidget(),
+                      SliverToBoxAdapter(
+                        child: TitlePriceWidget(),
+                      ),
                       SliverToBoxAdapter(child: GoodsConfigWidget(),)
 
                     ],
