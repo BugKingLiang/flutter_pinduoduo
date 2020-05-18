@@ -132,7 +132,7 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
     return SliverToBoxAdapter(
       child: Column(
         children: <Widget>[
-          ContainderDivider(child:
+          ContainerDivider(child:
             Container(
                 height: itemHeight,
                 child: MoreContainerWidget(
@@ -141,7 +141,7 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
                     paddingLeft: 10)),
             showBottomDivider: false,
           ),
-          ContainderDivider(child:
+          ContainerDivider(child:
             Container(
                 height: itemHeight,
                 child: MoreContainerWidget(
@@ -149,21 +149,21 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         Image.asset(ImageUtils.getImagePath('icons/guarantee')),
-                        Text('正品险由中国人保财险承保')
+                        Text('正品险由中国人保财险承保',style: TextStyle(color: Color(0xff58595b)))
                       ],
                     ),
                     paddingLeft: 5)),
             topDividerLeftMargin: 10,
             showBottomDivider: false,
           ),
-          ContainderDivider(child:Container(
+          ContainerDivider(child:Container(
               height: itemHeight,
               child: MoreContainerWidget(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Image.asset(ImageUtils.getImagePath('icons/order')),
-                      Text('「小米智能机畅销榜」前20名')
+                      Text('「小米智能机畅销榜」前20名',style: TextStyle(color: Color(0xff58595b)))
                     ],
                   ),
                   paddingLeft: 10)),topDividerLeftMargin: 10,)

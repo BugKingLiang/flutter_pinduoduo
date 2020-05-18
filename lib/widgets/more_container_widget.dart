@@ -26,7 +26,7 @@ class MoreContainerWidget extends StatelessWidget {
           ),
           Offstage(
             offstage: rightString == null,
-            child: Text(rightString??''),
+            child: Text(rightString??'',style: TextStyle(color: Color(0xff9c9c9c)),),
           ),
           Image.asset(ImageUtils.getImagePath('icons/more_grey'),width: _moreImageSize,height: _moreImageSize,)
 

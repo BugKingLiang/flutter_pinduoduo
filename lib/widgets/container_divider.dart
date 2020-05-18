@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ContainderDivider extends StatelessWidget {
+class ContainerDivider extends StatelessWidget {
   double dividerHeight;
 
   Color dividerColor;
@@ -18,7 +18,7 @@ class ContainderDivider extends StatelessWidget {
 
   Widget child;
 
-  ContainderDivider({@required this.child,
+  ContainerDivider({@required this.child,
       this.dividerColor = const Color(0xFFE0E0E0),
         this.dividerHeight = 0.5,
         this.topDividerLeftMargin = 0,
