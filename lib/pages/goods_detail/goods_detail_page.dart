@@ -43,14 +43,17 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
     _scrollController.addListener(_onScrollListener);
   }
 
-  void _onScrollListener(){
+  void _onScrollListener() {
     double offset = _scrollController.offset;
-    if(offset <=100){
-      setState(() {
+    if (offset <= 100) {
+      double opacity = offset / 100;
+      if (opacity >= 0) {
+        setState(() {
+          _appbarOpacity = opacity;
+        });
+      }
 
-      _appbarOpacity = offset/100;
-      });
-    }else if(offset >100 && _appbarOpacity < 1){
+    } else if (offset > 100 && _appbarOpacity < 1) {
       //快速滑动
       setState(() {
         _appbarOpacity = 1.0;
@@ -187,7 +190,7 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Image.asset(ImageUtils.getImagePath('icons/order')),
-                      Text('「小米智能机畅销榜」前20名',style: TextStyle(color: Color(0xff58595b)))
+                      Text('「小米智能机畅销榜」前20名',style: TextStyle(color:const Color(0xff58595b)))
                     ],
                   ),
                   paddingLeft: 10)),topDividerLeftMargin: 10,)
