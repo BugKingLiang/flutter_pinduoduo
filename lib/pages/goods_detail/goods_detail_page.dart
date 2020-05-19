@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:pingduoduo/pages/goods_detail/config_widget.dart';
+import 'package:pingduoduo/pages/goods_detail/goods_evaluate_widget.dart';
 import 'package:pingduoduo/pages/goods_detail/group_order_widget.dart';
 import 'package:pingduoduo/pages/goods_detail/title_price_widget.dart';
 import 'package:pingduoduo/util/image_utls.dart';
@@ -23,6 +24,10 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
   double _toolbarHeight;
   List<String> swiperData;
 
+  double _appbarOpacity = 0.1;
+
+  ScrollController _scrollController;
+
   @override
   void initState() {
     swiperData = [
@@ -34,6 +39,23 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
       'https://t00img.yangkeduo.com/goods/images/2020-02-24/77e48ba4-131e-4bdd-96f7-5dce906b2576.jpg'
     ];
     super.initState();
+    _scrollController = ScrollController();
+    _scrollController.addListener(_onScrollListener);
+  }
+
+  void _onScrollListener(){
+    double offset = _scrollController.offset;
+    if(offset <=100){
+      setState(() {
+
+      _appbarOpacity = offset/100;
+      });
+    }else if(offset >100 && _appbarOpacity < 1){
+      //快速滑动
+      setState(() {
+        _appbarOpacity = 1.0;
+      });
+    }
   }
 
   @override
@@ -49,6 +71,7 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
             children: <Widget>[
               Positioned.fill(
                   child: CustomScrollView(
+                    controller: _scrollController,
                     slivers: <Widget>[
                       _createSwiperWidget(),
                       SliverToBoxAdapter(
@@ -56,7 +79,8 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
                       ),
                       SliverToBoxAdapter(child: GoodsConfigWidget()),
                       _createGoodsPromiseWidget(),
-                      SliverToBoxAdapter(child: GroupOrderWidget()),
+                      SliverToBoxAdapter(child: GroupOrderWidget()),  //拼单轮播
+                      SliverToBoxAdapter(child: GoodsEvaluateWidget()),
                       SliverToBoxAdapter(
                         child: Container(
                           height: 300,
@@ -78,7 +102,7 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
 
   Widget _createToolBarWidget() {
     return Container(
-      color: Colors.white.withOpacity(0.1),
+      color: Colors.white.withOpacity(_appbarOpacity),
       height: _statusBarHeight + _toolbarHeight,
       padding: EdgeInsets.only(top: _statusBarHeight),
       child: Row(
