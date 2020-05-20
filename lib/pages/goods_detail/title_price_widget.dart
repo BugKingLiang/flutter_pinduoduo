@@ -53,7 +53,7 @@ class TitlePriceWidget extends StatelessWidget {
                               child: Center(
                                   child: Text('官方补贴品',
                                       style: TextStyle(
-                                          fontSize: 16,
+                                          fontSize: 14,
                                           color: Color(0xfff44250))))))
                     ])),
                     Container(

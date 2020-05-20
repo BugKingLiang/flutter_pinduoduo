@@ -19,7 +19,7 @@ class ContainerDivider extends StatelessWidget {
   Widget child;
 
   ContainerDivider({@required this.child,
-      this.dividerColor = const Color(0xFFE0E0E0),
+      this.dividerColor = const Color(0xfff4f4f4),
         this.dividerHeight = 0.5,
         this.topDividerLeftMargin = 0,
         this.topDividerRightMargin = 0,
@@ -51,8 +51,8 @@ class ContainerDivider extends StatelessWidget {
         Offstage(
           offstage: !showBottomDivider,
           child: Divider(
-              height: dividerHeight,
-              thickness: dividerHeight,
+              height: bottomDividerHeight??dividerHeight,
+              thickness: bottomDividerHeight??dividerHeight,
               indent: bottomDividerLeftMargin,
               endIndent: bottomDividerRightMargin,
               color: dividerColor),

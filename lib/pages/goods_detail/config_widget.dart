@@ -37,7 +37,7 @@ class GoodsConfigWidget extends StatelessWidget {
 
     var size = ScreenUtil.getInstance().setWidth(50);
     return Container(
-      width: ScreenUtil.getInstance().setWidth(230),
+      width: ScreenUtil.getInstance().setWidth(240),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -45,7 +45,7 @@ class GoodsConfigWidget extends StatelessWidget {
           Image.asset(ImageUtils.getImagePath(bean.image),width: size,height: size,),
           Padding(
             padding: const EdgeInsets.only(top: 5),
-            child: Text(bean.title,style: TextStyle(color: Color(0xff58595b),fontSize: 16)),
+            child: Text(bean.title,style: TextStyle(color: Color(0xff58595b),fontSize: 14)),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 2),
