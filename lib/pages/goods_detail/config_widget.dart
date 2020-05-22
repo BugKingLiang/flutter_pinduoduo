@@ -60,4 +60,7 @@ class GoodsConfigWidget extends StatelessWidget {
 
   }
 
+
+
+
 }
