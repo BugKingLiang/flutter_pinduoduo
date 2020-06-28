@@ -103,7 +103,7 @@ class _MainPageState extends State<MainPage> {
     return RefreshConfiguration(
       headerBuilder: () => MaterialClassicHeader(),
       enableBallisticLoad: true,
-      child: _testMaterailApp(),
+      child: _mainMaterialApp(),
     );
   }
 
