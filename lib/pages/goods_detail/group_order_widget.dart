@@ -14,11 +14,8 @@ class GroupOrderWidget extends StatefulWidget {
 }
 
 class _GroupOrderWidgetState extends State<GroupOrderWidget> {
-
-
   String _groupOrderDialog = 'group_order_dialog';
   var dialog;
-
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +23,7 @@ class _GroupOrderWidgetState extends State<GroupOrderWidget> {
       children: <Widget>[
         ContainerDivider(
           child: GestureDetector(
-            onTap: (){
+            onTap: () {
               showGroupOrderDialog(context);
             },
             child: MoreContainerWidget(
@@ -146,115 +143,126 @@ class _GroupOrderWidgetState extends State<GroupOrderWidget> {
         transitionDuration: Duration(milliseconds: 200),
         pageBuilder: (BuildContext context, Animation<double> animation,
             Animation<double> secondaryAnimation) {
-          return Stack(
-            children: <Widget>[
-              Center(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Container(
-                    color: Colors.white,
-                    width: 300,
-                    height: 400,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Text('可参与的拼单',
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  color: Color(0xff151516),
-                                  decoration: TextDecoration.none)),
+          return Center(
+            child: Container(
+              width: 300,
+              height: 500,
+              child: Column(
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.of(context, rootNavigator: true)
+                            .pop(_groupOrderDialog);
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(bottom: 10),
+                        padding: const EdgeInsets.all(8.0),
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle, color: Color(0xffe0e0e0)),
+                        child: Image.asset(
+                          ImageUtils.getImagePath('icons/close'),
                         ),
-//                        Expanded(child: Container(color: Colors.redAccent))
-
-                        Expanded(
-                          child: Container(
-                            child: ListView.separated(
-                                shrinkWrap: true,
-                                padding: EdgeInsets.all(0),
-                                itemBuilder: (context, index) {
-                                  return ContainerDivider(
-                                      child: Container(
-                                          child: Padding(
-                                            padding:
-                                            const EdgeInsets.symmetric(horizontal: 10),
-                                            child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              children: <Widget>[
-                                                Expanded(
-                                                  flex: 2,
-                                                  child: Stack(
-                                                    alignment: Alignment.centerLeft,
-                                                    children: <Widget>[
-                                                      CirculuarImageWidget(30,
-                                                          'https://avatar2.pddpic.com/a/36ce32113e666aa5cb2283368a36beeb170be1dc-1587861339?imageMogr2/thumbnail/100x'),
-                                                      Positioned(
-                                                          left: 15,
-                                                          child: CirculuarImageWidget(30,
-                                                              'https://avatar2.pddpic.com/a/9c577248e99970f0215a6d0e5aecbec785e7955b-1581928426?imageMogr2/thumbnail/100x')),
-                                                    ],
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                    flex: 5,
-                                                    child: Text('风吹屁屁 、司徒国能',
-                                                        style: TextStyle(
-                                                            fontSize: 12,
-                                                            color: Color(0xff151516),
-                                                            decoration:
-                                                            TextDecoration.none))),
-                                                FlatButton(
-                                                  onPressed: () {
-                                                    print('========================');
-                                                  },
-                                                  child: Text(
-                                                    '去拼单',
-                                                    style: TextStyle(color: Colors.white),
-                                                  ),
-                                                  color: Color(0xffe02e24),
-                                                  shape: RoundedRectangleBorder(
-                                                      borderRadius:
-                                                      BorderRadius.circular(5)),
-                                                )
-                                              ],
-                                            ),
-                                          )));
-                                },
-                                separatorBuilder: (context, index) {
-                                  return Divider(
-                                    thickness: 1,
-                                    height: 1,
-                                  );
-                                },
-                                itemCount: 10),
-                          ),
-                        )
-                      ],
+                      ),
                     ),
                   ),
-                ),
+                  Expanded(
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Container(
+                          color: Colors.white,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: Text('可参与的拼单',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: Color(0xff151516),
+                                        decoration: TextDecoration.none)),
+                              ),
+//                        Expanded(child: Container(color: Colors.redAccent))
+
+                              Expanded(
+                                child: Container(
+                                  child: ListView.separated(
+                                      shrinkWrap: true,
+                                      padding: EdgeInsets.all(0),
+                                      itemBuilder: (context, index) {
+                                        return ContainerDivider(
+                                            child: Container(
+                                                child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 10),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: <Widget>[
+                                              Expanded(
+                                                flex: 2,
+                                                child: Stack(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  children: <Widget>[
+                                                    CirculuarImageWidget(30,
+                                                        'https://avatar2.pddpic.com/a/36ce32113e666aa5cb2283368a36beeb170be1dc-1587861339?imageMogr2/thumbnail/100x'),
+                                                    Positioned(
+                                                        left: 15,
+                                                        child: CirculuarImageWidget(
+                                                            30,
+                                                            'https://avatar2.pddpic.com/a/9c577248e99970f0215a6d0e5aecbec785e7955b-1581928426?imageMogr2/thumbnail/100x')),
+                                                  ],
+                                                ),
+                                              ),
+                                              Expanded(
+                                                  flex: 5,
+                                                  child: Text('风吹屁屁 、司徒国能',
+                                                      style: TextStyle(
+                                                          fontSize: 12,
+                                                          color:
+                                                              Color(0xff151516),
+                                                          decoration:
+                                                              TextDecoration
+                                                                  .none))),
+                                              FlatButton(
+                                                onPressed: () {
+                                                  print(
+                                                      '========================');
+                                                },
+                                                child: Text(
+                                                  '去拼单',
+                                                  style: TextStyle(
+                                                      color: Colors.white),
+                                                ),
+                                                color: Color(0xffe02e24),
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5)),
+                                              )
+                                            ],
+                                          ),
+                                        )));
+                                      },
+                                      separatorBuilder: (context, index) {
+                                        return Divider(
+                                          thickness: 1,
+                                          height: 1,
+                                        );
+                                      },
+                                      itemCount: 10),
+                                ),
+                              )
+                            ],
+                          ),
+                        )),
+                  )
+                ],
               ),
-              Positioned(
-                right: 18,top: 160,
-                  child: GestureDetector(
-                    onTap: (){Navigator.of(context,rootNavigator: true).pop(_groupOrderDialog);},
-                    child: Container(
-                      padding: const EdgeInsets.all(8.0),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color(0xffe0e0e0)
-                      ),
-                      child: Image.asset(ImageUtils.getImagePath('icons/close'),),
-                    ),
-                  ))
-
-
-
-
-            ],
+            ),
           );
-
         });
   }
 }

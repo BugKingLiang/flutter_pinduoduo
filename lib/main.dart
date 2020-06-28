@@ -12,7 +12,6 @@ import 'package:pingduoduo/pages/home/home.dart';
 import 'package:pingduoduo/pages/member/member.dart';
 import 'package:pingduoduo/pages/message/msessage.dart';
 import 'package:pingduoduo/pages/recommend/recommend.dart';
-import 'package:pingduoduo/pages/subsidy/subsidy_page.dart';
 import 'package:pingduoduo/router/router.dart';
 import 'package:pingduoduo/util/color_constant.dart';
 import 'package:pingduoduo/util/image_utls.dart';

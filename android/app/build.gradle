@@ -22,6 +22,7 @@ if (flutterVersionName == null) {
 }
 
 apply plugin: 'com.android.application'
+//apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
@@ -65,3 +66,17 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 }
+/*apply plugin: 'maven'
+uploadArchives{
+    repositories{
+        mavendeployer{
+            repository(url:uri("F:\\maven"))
+            pom.groupId = "com.bugking.pinduoduo"
+            pom.artifactId = "pinduoduo"
+            pom.version = "1.0.1"
+        }
+    }
+
+
+}*/
+
