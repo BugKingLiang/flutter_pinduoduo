@@ -23,8 +23,8 @@ class GoodsInfoTitleWidget extends StatelessWidget {
       return WidgetSpan(
           alignment: PlaceholderAlignment.middle,
           child: Image.network(value,
-              width: ScreenUtil.getInstance().setWidth(120),
-              height: ScreenUtil.getInstance().setHeight(40),fit: BoxFit.fill,));
+              width: ScreenUtil().setWidth(120),
+              height: ScreenUtil().setHeight(40),fit: BoxFit.fill,));
     })?.toList();
 
     if (tagSpan != null) {

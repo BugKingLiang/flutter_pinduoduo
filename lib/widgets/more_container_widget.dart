@@ -7,7 +7,7 @@ class MoreContainerWidget extends StatelessWidget {
   Widget child;
   double paddingLeft;
   double paddingRight;
-  double _moreImageSize = ScreenUtil.getInstance().setWidth(50);
+  double _moreImageSize = ScreenUtil().setWidth(50);
   String rightString;
 
 

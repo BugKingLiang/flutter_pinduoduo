@@ -26,8 +26,8 @@ class QuickBackWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Image.asset(ImageUtils.getImagePath('icons/aj9'),
-              width: ScreenUtil.getInstance().setWidth(40),
-              height: ScreenUtil.getInstance().setWidth(40)),
+              width: ScreenUtil().setWidth(40),
+              height: ScreenUtil().setWidth(40)),
           Container(
               child: Text('顶部',
                   style:

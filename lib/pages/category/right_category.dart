@@ -1,6 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pingduoduo/provider/category_provider.dart';
 import 'package:pingduoduo/storage/http/api.dart';
@@ -43,7 +43,7 @@ class _RightCategoryWidgetState extends State<RightCategoryWidget> {
 
   Widget _createHeaderWidget(String title, String image) {
     return Container(
-      height: ScreenUtil.getInstance().setHeight(80),
+      height: ScreenUtil().setHeight(80),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -60,7 +60,7 @@ class _RightCategoryWidgetState extends State<RightCategoryWidget> {
                 child: Image(
                     image: CachedNetworkImageProvider(image??""),
                     fit: BoxFit.fill,
-                    height: ScreenUtil.getInstance().setWidth(50)),
+                    height: ScreenUtil().setWidth(50)),
               )),
         ],
       ),
@@ -83,8 +83,8 @@ class _RightCategoryWidgetState extends State<RightCategoryWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                    width: ScreenUtil.getInstance().setWidth(200),
-                    height: ScreenUtil.getInstance().setWidth(200),
+                    width: ScreenUtil().setWidth(200),
+                    height: ScreenUtil().setWidth(200),
                     child: Image(
                         image: CachedNetworkImageProvider(image),
                         fit: BoxFit.fill)),
@@ -208,7 +208,7 @@ class _RightCategoryWidgetState extends State<RightCategoryWidget> {
             child: Offstage(
               offstage: bannderInfo == null ||(bannderInfo != null &&bannderInfo['image_url'] == null),
               child: Container(
-                  height: ScreenUtil.getInstance().setHeight(300),
+                  height: ScreenUtil().setHeight(300),
                   padding: EdgeInsets.all(5),
                   child: Image(
                       image: CachedNetworkImageProvider(

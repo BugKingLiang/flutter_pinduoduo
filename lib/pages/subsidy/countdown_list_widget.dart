@@ -55,7 +55,7 @@ class _CountDownWidgetState extends State<CountDownWidget>
     return ClipRRect(
       borderRadius: BorderRadius.circular(5),
       child: Container(
-        width: ScreenUtil.getInstance().setWidth(600),
+        width: ScreenUtil().setWidth(600),
         decoration: BoxDecoration(
           color: Colors.white,
         ),
@@ -68,7 +68,7 @@ class _CountDownWidgetState extends State<CountDownWidget>
               decoration: BoxDecoration(
                   gradient: LinearGradient(
                       colors: [Color(0xfffff4de), Color(0xffffe7cc)])),
-              height: ScreenUtil.getInstance().setHeight(70),
+              height: ScreenUtil().setHeight(70),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -99,7 +99,7 @@ class _CountDownWidgetState extends State<CountDownWidget>
               children: <Widget>[
                 CachedNetworkImage(
                     imageUrl: bean.imaegUrl,
-                    width: ScreenUtil.getInstance().setWidth(200)),
+                    width: ScreenUtil().setWidth(200)),
                 Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -128,7 +128,7 @@ class _CountDownWidgetState extends State<CountDownWidget>
                       ),
 
                       Container(
-                        height: ScreenUtil.getInstance().setHeight(70),
+                        height: ScreenUtil().setHeight(70),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -195,7 +195,7 @@ class _CountDownWidgetState extends State<CountDownWidget>
       widgets.add(Positioned(
           left: offsetLeft,
           child: CirculuarImageWidget(
-              ScreenUtil.getInstance().setWidth(50), images[i])));
+              ScreenUtil().setWidth(50), images[i])));
 
       offsetLeft += 10;
     }

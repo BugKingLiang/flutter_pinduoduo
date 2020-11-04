@@ -16,7 +16,7 @@ class OtherWidgets extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
-              height: ScreenUtil.getInstance().setWidth(500),
+              height: ScreenUtil().setWidth(500),
               child: _createCategoryWidget(data['opt2_list'])),
           DividerWidget(height: 10),
           _createOrderWidget(
@@ -44,8 +44,8 @@ class OtherWidgets extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Container(
-                    width: ScreenUtil.getInstance().setWidth(190),
-                    height: ScreenUtil.getInstance().setWidth(190),
+                    width: ScreenUtil().setWidth(190),
+                    height: ScreenUtil().setWidth(190),
                     child: index < categorys.length - 1
                         ? Container(padding:EdgeInsets.symmetric(vertical: 5),child:Image.network(item['image_url'], fit: BoxFit.fill))
                         : Padding(padding: EdgeInsets.all(20),child:Image.asset(ImageUtils.getImagePath('home/agm')))),

@@ -290,12 +290,12 @@ class HorizontalSlideWidgets extends StatelessWidget {
   Widget _createType10(var subject_info,List subject_list){
     return Container(
       color: Colors.white,
-      height: ScreenUtil.getInstance().setHeight(600),
+      height: ScreenUtil().setHeight(600),
       padding: EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         children: <Widget>[
           Container(
-            height: ScreenUtil.getInstance().setHeight(150),
+            height: ScreenUtil().setHeight(150),
             child: Row(
 
               children: <Widget>[

@@ -33,7 +33,7 @@ class _SearchWidgetState extends State<SearchWidget> {
 
   @override
   Widget build(BuildContext context) {
-    _imageSize = ScreenUtil.getInstance().setWidth(60);
+    _imageSize = ScreenUtil().setWidth(60);
 
     switch (widget.searchType) {
       case SearchType.SEARCH_RESULT_TYPE:
@@ -55,7 +55,7 @@ class _SearchWidgetState extends State<SearchWidget> {
       color: widget.bgColor,
       padding: EdgeInsets.all(10),
       child: Container(
-        height: ScreenUtil.getInstance().setHeight(100),
+        height: ScreenUtil().setHeight(100),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(3), color: Color(0xffededed)),
         child: Row(
@@ -99,7 +99,7 @@ class _SearchWidgetState extends State<SearchWidget> {
   //输入框类型
   Widget _createTextFieldType(BuildContext context) {
     return Container(
-      height: ScreenUtil.instance.setHeight(150),
+      height: ScreenUtil().setHeight(150),
       padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
       child: Row(
         children: <Widget>[
@@ -130,7 +130,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                 ),
                 Expanded(
                     child: Container(
-                  height: ScreenUtil.instance.setHeight(150),
+                  height: ScreenUtil().setHeight(150),
                   child: widget.searchType == SearchType.SEARCH_RESULT_TYPE
                       ? _createSearchContentWidget(widget.content)
                       : _createTextFieldWidget(context, widget.content),

@@ -60,7 +60,7 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.getInstance().init(context);
+    ScreenUtil.init(context);
     return Scaffold(
       appBar: PreferredSize(
           child: AppBar(

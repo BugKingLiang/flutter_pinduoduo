@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
 
 class MainPage extends StatefulWidget {
   MainPage() {
-    Router router = Router();
+    FluroRouter router = FluroRouter();
     Routes.configureRouter(router);
     Application.router = router;
   }
@@ -99,7 +99,7 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.getInstance()..init(context);
+    ScreenUtil.init(context);
     return RefreshConfiguration(
       headerBuilder: () => MaterialClassicHeader(),
       enableBallisticLoad: true,

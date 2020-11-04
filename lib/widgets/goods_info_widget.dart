@@ -47,8 +47,8 @@ class GoodsInfoWidget extends StatelessWidget {
             children: <Widget>[
               _goodsActionImage != null?
               Container(
-                  width: ScreenUtil.getInstance().setWidth(120),
-                  height: ScreenUtil.getInstance().setHeight(40),
+                  width: ScreenUtil().setWidth(120),
+                  height: ScreenUtil().setHeight(40),
                   padding: EdgeInsets.symmetric(horizontal: 5),
                   child: CachedNetworkImage(imageUrl:
                     _goodsActionImage,
@@ -163,7 +163,7 @@ class GoodsInfoWidget extends StatelessWidget {
     ));
       case LowerRightWidget.find:
 
-        return FindWidget(ScreenUtil.getInstance().setWidth(120), ScreenUtil.getInstance().setHeight(70), 10,borderColor: Color(0xffc6c6c6));
+        return FindWidget(ScreenUtil().setWidth(120), ScreenUtil().setHeight(70), 10,borderColor: Color(0xffc6c6c6));
 
     }
   }

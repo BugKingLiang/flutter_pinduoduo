@@ -13,9 +13,9 @@ class GoodsEvaluateFlagWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var imageSize = ScreenUtil.getInstance().setWidth(40);
+    var imageSize = ScreenUtil().setWidth(40);
     return Container(
-      height: ScreenUtil.getInstance().setHeight(100),
+      height: ScreenUtil().setHeight(100),
       padding: EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
         color: backgroudColor,

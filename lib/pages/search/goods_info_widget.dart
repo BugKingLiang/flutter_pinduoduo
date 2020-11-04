@@ -26,7 +26,7 @@ class GoodsInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double itemHeight = ScreenUtil.getInstance().setHeight(350);
+    double itemHeight = ScreenUtil().setHeight(350);
     return Container(
       height: itemHeight,
       child: Row(

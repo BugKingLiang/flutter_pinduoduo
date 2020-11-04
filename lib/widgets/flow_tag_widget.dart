@@ -73,8 +73,8 @@ class _FlowTagWidgetState extends State<FlowTagWidget> {
                     offstage: bean.leftIcon == null,
                     child: Container(
 
-                        width: ScreenUtil.getInstance().setWidth(40),
-                        height: ScreenUtil.getInstance().setWidth(40),
+                        width: ScreenUtil().setWidth(40),
+                        height: ScreenUtil().setWidth(40),
 
                         child: ImageUtils.getImageWidget(
                             bean.leftIcon, bean.imageType)),
@@ -90,8 +90,8 @@ class _FlowTagWidgetState extends State<FlowTagWidget> {
                   Offstage(
                     offstage: bean.rightIcon == null,
                     child: Container(
-                        width: ScreenUtil.getInstance().setWidth(40),
-                        height: ScreenUtil.getInstance().setWidth(40),
+                        width: ScreenUtil().setWidth(40),
+                        height: ScreenUtil().setWidth(40),
                         child: ImageUtils.getImageWidget(
                             bean.rightIcon, bean.imageType)),
                   ),

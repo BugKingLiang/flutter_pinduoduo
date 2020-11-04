@@ -64,12 +64,12 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
   @override
   Widget build(BuildContext context) {
     _statusBarHeight = MediaQuery.of(context).padding.top;
-    _toolbarHeight = ScreenUtil.getInstance().setHeight(100);
+    _toolbarHeight = ScreenUtil().setHeight(100);
 
     return MaterialApp(
       home: Scaffold(
         body: Container(
-          height: ScreenUtil.screenHeight,
+          height: ScreenUtil().screenHeight,
           child: Stack(
             children: <Widget>[
               Positioned.fill(
@@ -140,7 +140,7 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
   SliverToBoxAdapter _createSwiperWidget() {
     return SliverToBoxAdapter(
       child: Container(
-        height: ScreenUtil.getInstance().setHeight(1000),
+        height: ScreenUtil().setHeight(1000),
         child: Swiper(
             itemCount: swiperData.length,
             autoplay: false,
@@ -155,7 +155,7 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
   }
 
   SliverToBoxAdapter _createGoodsPromiseWidget() {
-    double itemHeight = ScreenUtil.getInstance().setHeight(150);
+    double itemHeight = ScreenUtil().setHeight(150);
     return SliverToBoxAdapter(
       child: Column(
         children: <Widget>[
@@ -202,7 +202,7 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
   Widget _createBottomWidget() {
     return Container(
       color: Colors.white,
-      height: ScreenUtil.getInstance().setHeight(160),
+      height: ScreenUtil().setHeight(160),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
@@ -212,7 +212,7 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
               '店铺',
               'icons/store',
               filePath: true,
-              imageSize: ScreenUtil.getInstance().setWidth(70),
+              imageSize: ScreenUtil().setWidth(70),
             ),
           ),
           Padding(
@@ -221,7 +221,7 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
               '收藏',
               'icons/like',
               filePath: true,
-              imageSize: ScreenUtil.getInstance().setWidth(70),
+              imageSize: ScreenUtil().setWidth(70),
             ),
           ),
           Padding(
@@ -230,7 +230,7 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
               '客服',
               'icons/message',
               filePath: true,
-              imageSize: ScreenUtil.getInstance().setWidth(70),
+              imageSize: ScreenUtil().setWidth(70),
             ),
           ),
           Expanded(

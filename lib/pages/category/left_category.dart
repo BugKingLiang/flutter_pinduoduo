@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pingduoduo/provider/category_provider.dart';
@@ -27,9 +26,9 @@ class _LeftCategoryState extends State<LeftCategory> {
 
 
     return Container(
-      width: ScreenUtil.getInstance().setWidth(250),
+      width: ScreenUtil().setWidth(250),
       child: ListView(
-        itemExtent: ScreenUtil.getInstance().setHeight(150),
+        itemExtent: ScreenUtil().setHeight(150),
         physics: BouncingScrollPhysics(),
         children: MockData.categoryMap.keys.map((key){
           return GestureDetector(
@@ -56,7 +55,7 @@ class _LeftCategoryState extends State<LeftCategory> {
                   ),
                   Positioned(
                       child: Container(
-                        width: ScreenUtil.getInstance().setWidth(10),
+                        width: ScreenUtil().setWidth(10),
                         color: _currentSelectKey == key
                             ? _selectedIndicatorColor
                             : _normalIndicatorColor,
@@ -72,9 +71,9 @@ class _LeftCategoryState extends State<LeftCategory> {
     );
 
    /* return Container(
-        width: ScreenUtil.getInstance().setWidth(250),
+        width: ScreenUtil().setWidth(250),
         child: ListView.builder(
-            itemExtent: ScreenUtil.getInstance().setHeight(150),
+            itemExtent: ScreenUtil().setHeight(150),
             itemCount: MockData.category.length,
             physics: BouncingScrollPhysics(),
             itemBuilder: (context, index) {
@@ -101,7 +100,7 @@ class _LeftCategoryState extends State<LeftCategory> {
                       ),
                       Positioned(
                           child: Container(
-                        width: ScreenUtil.getInstance().setWidth(10),
+                        width: ScreenUtil().setWidth(10),
                         color: _currentSelectIndex == index
                             ? _selectedIndicatorColor
                             : _normalIndicatorColor,

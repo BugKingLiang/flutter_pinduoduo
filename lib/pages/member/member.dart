@@ -65,7 +65,7 @@ class _MemberPageState extends State<MemberPage> {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.getInstance()..init(context);
+    ScreenUtil.init(context);
 
     return Scaffold(
       appBar: PreferredSize(
@@ -94,7 +94,7 @@ class _MemberPageState extends State<MemberPage> {
   Widget _createMemberHeaderWidget() {
     return SliverToBoxAdapter(
       child: Container(
-        height: ScreenUtil.getInstance().setHeight(450),
+        height: ScreenUtil().setHeight(450),
         child: Column(
           children: <Widget>[
             Expanded(
@@ -104,7 +104,7 @@ class _MemberPageState extends State<MemberPage> {
                   Container(
                       margin: EdgeInsets.symmetric(horizontal: 10),
                       child: CircleAvatar(
-                          radius: ScreenUtil.getInstance().setWidth(100),
+                          radius: ScreenUtil().setWidth(100),
                           backgroundColor: Colors.white,
                           backgroundImage: CachedNetworkImageProvider(
                               'https://pinduoduoimg.yangkeduo.com/avatar/default/9.png?imageMogr2/format/webp/quality/50'))),
@@ -129,11 +129,11 @@ class _MemberPageState extends State<MemberPage> {
                   )),
                   Container(
                     margin: EdgeInsets.only(right: 10),
-                    width: ScreenUtil.getInstance().setWidth(300),
-                    height: ScreenUtil.getInstance().setHeight(100),
+                    width: ScreenUtil().setWidth(300),
+                    height: ScreenUtil().setHeight(100),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(
-                            ScreenUtil.getInstance().setHeight(50))),
+                            ScreenUtil().setHeight(50))),
                         border: Border.all(width: 1, color: Colors.black12)),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -141,8 +141,8 @@ class _MemberPageState extends State<MemberPage> {
                       children: <Widget>[
                         Image.asset(ImageUtils.getImagePath('icons/hongbao'),
                             fit: BoxFit.cover,
-                            width: ScreenUtil.getInstance().setHeight(50),
-                            height: ScreenUtil.getInstance().setHeight(60)),
+                            width: ScreenUtil().setHeight(50),
+                            height: ScreenUtil().setHeight(60)),
                         Text('拼单返现'),
                       ],
                     ),
@@ -172,11 +172,11 @@ class _MemberPageState extends State<MemberPage> {
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 8),
                       alignment: Alignment.center,
-                      height: ScreenUtil.getInstance().setHeight(90),
+                      height: ScreenUtil().setHeight(90),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(
-                            ScreenUtil.getInstance().setHeight(50))),
+                            ScreenUtil().setHeight(50))),
                       ),
                       child: Text(
                         '领4张5元无门槛',
@@ -186,7 +186,7 @@ class _MemberPageState extends State<MemberPage> {
                     Container(
                       margin: EdgeInsets.symmetric(horizontal: 8),
                       child: Image.asset(ImageUtils.getImagePath('icons/more'),
-                          width: ScreenUtil.getInstance().setWidth(50)),
+                          width: ScreenUtil().setWidth(50)),
                     )
                   ],
                 ),
@@ -203,7 +203,7 @@ class _MemberPageState extends State<MemberPage> {
   Widget _createOrderWidget() {
     return SliverToBoxAdapter(
       child: Container(
-        height: ScreenUtil.getInstance().setHeight(400),
+        height: ScreenUtil().setHeight(400),
         child: Column(
           children: <Widget>[
             Expanded(
@@ -233,12 +233,12 @@ class _MemberPageState extends State<MemberPage> {
                           orderNames[index],
                           orderImages[index],
                           filePath: true,
-                          imageSize: ScreenUtil.getInstance().setWidth(70),
+                          imageSize: ScreenUtil().setWidth(70),
                           textColor: Color(0xff58595b),
                         );
                       }),
                 )),
-            DividerWidget(height: ScreenUtil.getInstance().setHeight(20))
+            DividerWidget(height: ScreenUtil().setHeight(20))
           ],
         ),
       ),
@@ -248,7 +248,7 @@ class _MemberPageState extends State<MemberPage> {
   Widget _crateMiddleMenuWidget() {
     return SliverToBoxAdapter(
       child: Container(
-        height: ScreenUtil.getInstance().setHeight(300),
+        height: ScreenUtil().setHeight(300),
         child: Column(
           children: <Widget>[
             Expanded(
@@ -262,12 +262,12 @@ class _MemberPageState extends State<MemberPage> {
                       middleMenuNames[index],
                       middleMenuImages[index],
                       filePath: true,
-                      imageSize: ScreenUtil.getInstance().setWidth(70),
+                      imageSize: ScreenUtil().setWidth(70),
                       textColor: Color(0xff58595b),
                     );
                   }),
             ),
-            DividerWidget(height: ScreenUtil.getInstance().setHeight(20))
+            DividerWidget(height: ScreenUtil().setHeight(20))
           ],
         ),
       ),
@@ -277,7 +277,7 @@ class _MemberPageState extends State<MemberPage> {
   Widget _createBottomMemuWidget() {
     return SliverToBoxAdapter(
       child: Container(
-          height: ScreenUtil.getInstance().setHeight(980),
+          height: ScreenUtil().setHeight(980),
           child: Column(
             children: <Widget>[
               Expanded(
@@ -292,15 +292,15 @@ class _MemberPageState extends State<MemberPage> {
                     bean.title, bean.image, filePath: true,
                     textColor: Color(0xff58595b),
                     titleSize: 12,
-                    imageSize: ScreenUtil.getInstance().setWidth(90),);
+                    imageSize: ScreenUtil().setWidth(90),);
                 }, itemCount: bottomMenuBeans.length,),
               ),
-              DividerWidget(height: ScreenUtil.getInstance().setHeight(20)),
+              DividerWidget(height: ScreenUtil().setHeight(20)),
               Container(
-                height: ScreenUtil.getInstance().setHeight(200),
+                height: ScreenUtil().setHeight(200),
                 child: CachedNetworkImage(imageUrl: 'http://t00img.yangkeduo.com/goods/2020-01-08/384da760aa4cc2f794b79e3f472c6abf.jpeg',fit: BoxFit.fill),),
-              DividerWidget(height: ScreenUtil.getInstance().setHeight(20)),
-              Container(height: ScreenUtil.getInstance().setHeight(60),child: Center(child: Text('精选推荐',style: TextStyle(color: Color(0xffe02e24),fontSize: 18))))
+              DividerWidget(height: ScreenUtil().setHeight(20)),
+              Container(height: ScreenUtil().setHeight(60),child: Center(child: Text('精选推荐',style: TextStyle(color: Color(0xffe02e24),fontSize: 18))))
 
             ],
           )
@@ -318,7 +318,7 @@ class _MemberPageState extends State<MemberPage> {
                   return GoodsInfoWidget(
                       item['hd_thumb_url'],
                       //切记不要直接使用ScreenUtil.getInstance().width/2
-                     ScreenUtil.screenWidth / 2,
+                     ScreenUtil().screenWidth / 2,
                   iconList != null ? iconList[0]['url'] : null,
                   item['goods_name'],
                   item['tag_list'],

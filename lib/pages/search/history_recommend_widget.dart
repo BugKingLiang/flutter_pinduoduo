@@ -33,14 +33,14 @@ class _HistoryRecommendWidgetState extends State<HistoryRecommendWidget> {
             separatorBuilder: (context, index) {
               return Divider(
                   color: Colors.white,
-                  height: ScreenUtil.getInstance().setHeight(40));
+                  height: ScreenUtil().setHeight(40));
             },
             itemCount: data != null ? data.length : 0));
   }
 
   Widget _crateHeaderWidget(FlowTagBean headerData) {
     return Container(
-      height: ScreenUtil.getInstance().setHeight(120),
+      height: ScreenUtil().setHeight(120),
       child: Row(
         children: <Widget>[
           Offstage(

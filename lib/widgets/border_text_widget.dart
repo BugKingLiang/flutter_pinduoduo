@@ -14,9 +14,8 @@ class BorderTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: ScreenUtil.getInstance().setWidth(100),
-      height: ScreenUtil.getInstance().setHeight(60),
-
+      width: ScreenUtil().setWidth(100),
+      height: ScreenUtil().setHeight(60),
       alignment: Alignment.center,
       decoration: BoxDecoration(
 

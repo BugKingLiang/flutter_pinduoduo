@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.getInstance()..init(context);
+    ScreenUtil.init(context);
     return Scaffold(
       appBar: PreferredSize(
           child: AppBar(

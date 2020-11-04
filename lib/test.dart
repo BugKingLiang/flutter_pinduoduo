@@ -30,7 +30,7 @@ class TestPage extends StatefulWidget {
 class _TestPageState extends State<TestPage> {
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.getInstance().init(context);
+    ScreenUtil.init(context);
 
     return Scaffold(
         appBar: PreferredSize(
@@ -96,8 +96,8 @@ Container(
                     top: 10,
                     child: Container(
 
-                      width: ScreenUtil.getInstance().setWidth(320),
-                      height: ScreenUtil.getInstance().setHeight(250),
+                      width: ScreenUtil().setWidth(320),
+                      height: ScreenUtil().setHeight(250),
                       decoration: BoxDecoration(
 
                           color:Colors.white,

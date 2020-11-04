@@ -13,7 +13,7 @@ class Routes{
   static String goods_detail = '/goods_detail';   //商品详情
 
 
-  static void configureRouter(Router router){
+  static void configureRouter(FluroRouter router){
 
     router.define(search_page, handler: search_handler);
     router.define(search_resout_page, handler: search_result_handler);

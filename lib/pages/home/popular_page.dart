@@ -118,7 +118,7 @@ class _PopularPageState extends State<PopularPage>
         children: <Widget>[
           //轮播图
           Container(
-            height: ScreenUtil.getInstance().setHeight(450),
+            height: ScreenUtil().setHeight(450),
             child: Swiper(
                 itemCount: bannerData.length,
                 autoplay: true,

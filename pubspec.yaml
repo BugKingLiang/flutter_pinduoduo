@@ -11,21 +11,24 @@ dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^0.1.2
-  dio: ^3.0.7
+  cupertino_icons: ^1.0.0
+  dio: ^3.0.10
   flutter_swiper : ^1.1.6
-  flutter_screenutil: ^0.4.1
+  flutter_screenutil: ^3.2.0
   toast: ^0.1.5
-  pull_to_refresh: ^1.5.7
-  provider: ^3.2.0
-  cached_network_image: ^2.0.0
+  pull_to_refresh: ^1.6.2
+  provider: ^4.3.2+2
+  cached_network_image: ^2.3.3
 #  flustars: ^0.2.6+1
-  badges: ^1.1.0
-  flutter_svg: ^0.17.0
-  shared_preferences: ^0.5.6
-  fluro: ^1.6.3
+  badges: ^1.1.4
+  flutter_svg: ^0.19.1
+  shared_preferences: ^0.5.12+4
+  fluro: ^1.7.7
 
-  extended_nested_scroll_view: ^0.4.0
+  extended_nested_scroll_view: ^1.0.1
+
+dependency_overrides:
+  sqflite: ^1.3.2+1
 
 dev_dependencies:
   flutter_test:

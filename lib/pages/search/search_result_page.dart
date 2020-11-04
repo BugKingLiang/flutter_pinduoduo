@@ -53,7 +53,7 @@ class _SearchResoutPageState extends State<SearchResoutPage> {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.getInstance().init(context);
+    ScreenUtil.init(context);
 
     return Scaffold(
       appBar: PreferredSize(
@@ -95,7 +95,7 @@ class _SearchResoutPageState extends State<SearchResoutPage> {
                   delegate: HeaderWidget(
                       _globalKey,
                       _fliterKey,
-                      ScreenUtil.getInstance().setHeight(120),
+                      ScreenUtil().setHeight(120),
                           () {
                     _popupTriangleIndicator.show(_globalKey, (result) {
                       _popupTriangleIndicator.dismiss();
@@ -180,8 +180,8 @@ class HeaderWidget extends SliverPersistentHeaderDelegate {
                             child: SvgPicture.asset(
                               ImageUtils.getSvgImagePath('triangle_down'),
                               fit: BoxFit.cover,
-                              width: ScreenUtil.getInstance().setWidth(30),
-                              height: ScreenUtil.getInstance().setWidth(30),
+                              width: ScreenUtil().setWidth(30),
+                              height: ScreenUtil().setWidth(30),
                             ),
                           )
                         ],
@@ -209,14 +209,14 @@ class HeaderWidget extends SliverPersistentHeaderDelegate {
                               SvgPicture.asset(
                                 ImageUtils.getSvgImagePath('triangle_up_normal'),
                                 fit: BoxFit.cover,
-                                width: ScreenUtil.getInstance().setWidth(25),
-                                height: ScreenUtil.getInstance().setWidth(25),
+                                width: ScreenUtil().setWidth(25),
+                                height: ScreenUtil().setWidth(25),
                               ),
                               SvgPicture.asset(
                                 ImageUtils.getSvgImagePath('triangle_down_normal'),
                                 fit: BoxFit.cover,
-                                width: ScreenUtil.getInstance().setWidth(25),
-                                height: ScreenUtil.getInstance().setWidth(25),
+                                width: ScreenUtil().setWidth(25),
+                                height: ScreenUtil().setWidth(25),
                               ),
                             ],
                           ),
@@ -227,7 +227,7 @@ class HeaderWidget extends SliverPersistentHeaderDelegate {
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 10),
                     color: Colors.grey,
-                    width: ScreenUtil.getInstance().setWidth(1),
+                    width: ScreenUtil().setWidth(1),
                     height: childHeight,
                   ),
                   Expanded(
@@ -253,8 +253,8 @@ class HeaderWidget extends SliverPersistentHeaderDelegate {
                             child: SvgPicture.asset(
                               ImageUtils.getSvgImagePath('filter'),
                               fit: BoxFit.cover,
-                              width: ScreenUtil.getInstance().setWidth(30),
-                              height: ScreenUtil.getInstance().setWidth(30),
+                              width: ScreenUtil().setWidth(30),
+                              height: ScreenUtil().setWidth(30),
                             ),
                           )
                         ],
@@ -265,7 +265,7 @@ class HeaderWidget extends SliverPersistentHeaderDelegate {
               ),
             ),
           ),
-          Divider(height: 1,thickness: ScreenUtil.getInstance().setHeight(1))
+          Divider(height: 1,thickness: ScreenUtil().setHeight(1))
         ],
       ),
     );

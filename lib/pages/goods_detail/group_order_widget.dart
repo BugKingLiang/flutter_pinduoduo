@@ -39,7 +39,7 @@ class _GroupOrderWidgetState extends State<GroupOrderWidget> {
           showBottomDivider: false,
         ),
         Container(
-          height: ScreenUtil.getInstance().setHeight(300),
+          height: ScreenUtil().setHeight(300),
           child: Swiper(
               scrollDirection: Axis.vertical,
               itemCount: 10,

@@ -24,7 +24,7 @@ class _CagegoryPageState extends State<CagegoryPage> with AutomaticKeepAliveClie
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.getInstance()..init(context);
+    ScreenUtil.init(context);
 
     return ChangeNotifierProvider.value(
       value: model,
@@ -43,7 +43,7 @@ class _CagegoryPageState extends State<CagegoryPage> with AutomaticKeepAliveClie
             children: <Widget>[
               Container(
                   color: Colors.white,
-                  height: ScreenUtil.getInstance().setHeight(100),
+                  height: ScreenUtil().setHeight(100),
                   child: Stack(
                     alignment: Alignment.center,
                     children: <Widget>[
@@ -55,8 +55,8 @@ class _CagegoryPageState extends State<CagegoryPage> with AutomaticKeepAliveClie
                       Positioned(
                         child: Image.asset(
                           ImageUtils.getImagePath('icons/share'),
-                          width: ScreenUtil.getInstance().setWidth(80),
-                          height: ScreenUtil.getInstance().setWidth(80),
+                          width: ScreenUtil().setWidth(80),
+                          height: ScreenUtil().setWidth(80),
                         ),
                         right: 10,
                       )

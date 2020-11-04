@@ -80,10 +80,10 @@ class _MessagePageState extends State<MessagePage> with AutomaticKeepAliveClient
       child: Offstage(
         offstage: recommendData.isEmpty,
         child: Container(
-          height: ScreenUtil.instance.setHeight(130),
+          height: ScreenUtil().setHeight(130),
           child: Column(
             children: <Widget>[
-              DividerWidget(height: ScreenUtil.instance.setHeight(20)),
+              DividerWidget(height: ScreenUtil().setHeight(20)),
                Container(child: Center(child: Text('精选推荐',style: TextStyle(color: Colors.red,fontSize: 18))))
 
             ],
@@ -102,7 +102,7 @@ class _MessagePageState extends State<MessagePage> with AutomaticKeepAliveClient
       return GoodsInfoWidget(
           item['hd_thumb_url'],
           //切记不要直接使用ScreenUtil.getInstance().width/2
-         ScreenUtil.screenWidth/ 2,
+         ScreenUtil().screenWidth/ 2,
           iconList != null ? iconList[0]['url'] : null,
           item['goods_name'],
           item['tag_list'],

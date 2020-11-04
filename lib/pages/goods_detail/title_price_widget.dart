@@ -21,7 +21,7 @@ class TitlePriceWidget extends StatelessWidget {
 
   Widget _cratePriceWidget() {
     return Container(
-      height: ScreenUtil.getInstance().setHeight(200),
+      height: ScreenUtil().setHeight(200),
       child: Row(
         children: <Widget>[
           Expanded(
@@ -44,7 +44,7 @@ class TitlePriceWidget extends StatelessWidget {
                               fontWeight: FontWeight.w700)),
                       WidgetSpan(
                           child: Container(
-                              width: ScreenUtil.getInstance().setWidth(260),
+                              width: ScreenUtil().setWidth(260),
                               padding: EdgeInsets.all(6),
                               margin: EdgeInsets.only(left: 3),
                               decoration: BoxDecoration(
@@ -91,8 +91,8 @@ class TitlePriceWidget extends StatelessWidget {
               child: CachedNetworkImage(
                   imageUrl:
                       'https://t00img.yangkeduo.com/goods/images/2018-12-29/e01ec845d67c3717fd0581da8dbf86bd.png?imageMogr2/strip%7CimageView2/2/w/1300/q/80',
-                  width: ScreenUtil.getInstance().setWidth(120),
-                  height: ScreenUtil.getInstance().setHeight(60))),
+                  width: ScreenUtil().setWidth(120),
+                  height: ScreenUtil().setHeight(60))),
           TextSpan(
               text: '小米10 Pro 双模5G 骁龙865  50W快充 拍照智能新品游戏手机【成团后4天内发',
               style: TextStyle(

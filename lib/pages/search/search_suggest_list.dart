@@ -44,7 +44,7 @@ class SearchSuggestListWidget extends StatelessWidget {
                 child: Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.only(left: 10),
-                  height: ScreenUtil.instance.setHeight(80),
+                  height: ScreenUtil().setHeight(80),
                   child: InkWell(child: Text(_searchSuggest[index])),),
               );
             },

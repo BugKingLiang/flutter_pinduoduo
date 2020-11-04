@@ -30,11 +30,11 @@ class GoodsItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      height: ScreenUtil.getInstance().setHeight(450),
+      height: ScreenUtil().setHeight(450),
       child: Row(
         children: <Widget>[
           Container(
-            width: ScreenUtil.getInstance().setHeight(400),
+            width: ScreenUtil().setHeight(400),
             child: Stack(
               alignment: Alignment.center,
               children: <Widget>[

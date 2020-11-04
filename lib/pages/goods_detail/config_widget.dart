@@ -19,7 +19,7 @@ class GoodsConfigWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: ScreenUtil.getInstance().setHeight(240),
+      height: ScreenUtil().setHeight(240),
       child: ListView.separated(
           itemBuilder: (context, index) {
 
@@ -35,9 +35,9 @@ class GoodsConfigWidget extends StatelessWidget {
 
   Widget _createItemWidget(GoodsConfigBean bean ){
 
-    var size = ScreenUtil.getInstance().setWidth(50);
+    var size = ScreenUtil().setWidth(50);
     return Container(
-      width: ScreenUtil.getInstance().setWidth(240),
+      width: ScreenUtil().setWidth(240),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,

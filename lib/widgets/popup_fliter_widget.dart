@@ -43,7 +43,7 @@ class PopupFliterWidget {
                   ),
               Container(
                   color: Colors.white,
-                  height: ScreenUtil.getInstance().setHeight(900),
+                  height: ScreenUtil().setHeight(900),
                   child: Column(
                     children: <Widget>[
                       Expanded(
@@ -64,7 +64,7 @@ class PopupFliterWidget {
                         ),
                       ),
                       Container(
-                        height: ScreenUtil.getInstance().setHeight(120),
+                        height: ScreenUtil().setHeight(120),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -150,7 +150,7 @@ class PopupFliterWidget {
         children: <Widget>[
           Expanded(
               child: Container(
-            height: ScreenUtil.getInstance().setHeight(120),
+            height: ScreenUtil().setHeight(120),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 color: Color(0xfff8f8f8)),
@@ -165,7 +165,7 @@ class PopupFliterWidget {
             ),
           )),
           Container(
-            width: ScreenUtil.getInstance().setWidth(100),
+            width: ScreenUtil().setWidth(100),
             child: Divider(
               height: 1,
               thickness: 1,
@@ -174,7 +174,7 @@ class PopupFliterWidget {
           ),
           Expanded(
               child: Container(
-                height: ScreenUtil.getInstance().setHeight(120),
+                height: ScreenUtil().setHeight(120),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     color: Color(0xfff8f8f8)),

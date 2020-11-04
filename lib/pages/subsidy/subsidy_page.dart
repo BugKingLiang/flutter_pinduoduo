@@ -93,7 +93,7 @@ class _SubsidyPageState extends State<SubsidyPage> with TickerProviderStateMixin
   Widget build(BuildContext context) {
 
     calculatePinnedHeaderHeight();
-    _headerHeight = ScreenUtil.getInstance().setHeight(1500);
+    _headerHeight = ScreenUtil().setHeight(1500);
 
 
     return ChangeNotifierProvider.value(
@@ -154,7 +154,7 @@ class _SubsidyPageState extends State<SubsidyPage> with TickerProviderStateMixin
                 onTap: (){
                   Application.router.pop(context);
                 },
-                  child: SvgPicture.asset(_headerBackImage,fit: BoxFit.cover,width: ScreenUtil.getInstance().setWidth(90),height: ScreenUtil.getInstance().setWidth(90))),
+                  child: SvgPicture.asset(_headerBackImage,fit: BoxFit.cover,width: ScreenUtil().setWidth(90),height: ScreenUtil().setWidth(90))),
               Expanded(child: Container(
                   margin: EdgeInsets.symmetric(horizontal: 5),
                   decoration: BoxDecoration(
@@ -170,7 +170,7 @@ class _SubsidyPageState extends State<SubsidyPage> with TickerProviderStateMixin
                       Text('智能手表',style: TextStyle(fontSize: 14,color: Color(0xff9c9c9c)),)
                     ],
                   ))),
-              Image.asset(_headerShareImage,width: ScreenUtil.getInstance().setWidth(90),height: ScreenUtil.getInstance().setWidth(90),)
+              Image.asset(_headerShareImage,width: ScreenUtil().setWidth(90),height: ScreenUtil().setWidth(90),)
 
             ],
           ),
@@ -187,7 +187,7 @@ class _SubsidyPageState extends State<SubsidyPage> with TickerProviderStateMixin
               children: <Widget>[
                 //倒计时
                 Container(
-                  height: ScreenUtil.getInstance().setHeight(900),
+                  height: ScreenUtil().setHeight(900),
                   child: Stack(
                     
                     children: <Widget>[
@@ -195,7 +195,7 @@ class _SubsidyPageState extends State<SubsidyPage> with TickerProviderStateMixin
                       Positioned(
                         left:0,right:0,bottom: 5,
                         child: Container(
-                          height: ScreenUtil.getInstance().setHeight(350),
+                          height: ScreenUtil().setHeight(350),
                           color: Colors.transparent,
                           child: CountDownWidget()
                         ),
@@ -205,8 +205,8 @@ class _SubsidyPageState extends State<SubsidyPage> with TickerProviderStateMixin
                   ),
                 ),
                 Container(
-                  height: ScreenUtil.getInstance().setHeight(120),
-                  width: ScreenUtil.screenWidth,
+                  height: ScreenUtil().setHeight(120),
+                  width: ScreenUtil().screenWidth,
                   child: CachedNetworkImage(
                     imageUrl:'https://pinduoduoimg.yangkeduo.com/brand_station/2020-03-18/afae4ee9-8417-4af4-a306-a1bb8021ee54.png?imageMogr2/sharpen/50/strip%7CimageView2/2/w/1000/q/70/format/webp',fit: BoxFit.fill,),
                 ),
@@ -224,7 +224,7 @@ class _SubsidyPageState extends State<SubsidyPage> with TickerProviderStateMixin
               child: Container(
                 color: _headerOpacityColor,
                 height:  MediaQuery.of(context).padding.top,
-                width: ScreenUtil.screenWidth,
+                width: ScreenUtil().screenWidth,
               ),
             )
           ],

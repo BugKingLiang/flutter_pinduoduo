@@ -12,13 +12,13 @@ class SearchResultHeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      height: ScreenUtil.getInstance().setHeight(400),
+      height: ScreenUtil().setHeight(400),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Container(
-            height: ScreenUtil.getInstance().setHeight(60),
+            height: ScreenUtil().setHeight(60),
               child: Center(child: Text('- 热门品牌 -',style: TextStyle(fontSize: 14),))),
           GridView.builder(
             shrinkWrap: true,

@@ -30,8 +30,8 @@ class PopupTriangleIndicator {
     layout = OverlayEntry(
       builder: (context) {
         return Positioned(
-            width: ScreenUtil.getInstance().setWidth(320),
-            height: ScreenUtil.getInstance().setHeight(250),
+            width: ScreenUtil().setWidth(320),
+            height: ScreenUtil().setHeight(250),
             top: top,
             child:Scaffold(
               body: Container(
